@@ -1,0 +1,13 @@
+{
+  "name": "@labs/core.docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "docs.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-errors": "^2.0.0",
+    "@asteasolutions/zod-to-openapi": "^7.1.1"
+  }
+}

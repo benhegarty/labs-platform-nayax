@@ -1,0 +1,3 @@
+# labs-platform-core
+
+Proper readme coming soon...

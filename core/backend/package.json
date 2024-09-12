@@ -1,0 +1,9 @@
+{
+  "name": "@labs/core.backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
