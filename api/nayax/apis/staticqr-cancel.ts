@@ -10,7 +10,7 @@ export const Cancel = api({
   title: "Static QR Cancel",
   description: "Cancel a static QR code transaction.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticCancelRequestSchema,
   responseSchema: staticCancelResponseSchema
 });

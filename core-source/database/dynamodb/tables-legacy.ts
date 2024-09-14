@@ -1,10 +1,12 @@
 export const AccessGroupTable = {
   _meta: {
+    legacy: true,
     table: "AccessGroup",
     primaryKey: "id",
   },
   byMembershipLocationId: {
     _meta: {
+      legacy: true,
       table: "AccessGroup",
       index: "byMembershipLocationId",
       primaryKey: "membershipLocationId",
@@ -14,11 +16,13 @@ export const AccessGroupTable = {
 
 export const AccessGroupAccessPointTable = {
   _meta: {
+    legacy: true,
     table: "AccessGroupAccessPoint",
     primaryKey: "id",
   },
   byAccessGroup: {
     _meta: {
+      legacy: true,
       table: "AccessGroupAccessPoint",
       index: "byAccessGroup",
       primaryKey: "accessGroupId",
@@ -28,11 +32,13 @@ export const AccessGroupAccessPointTable = {
 
 export const AccessPointTable = {
   _meta: {
+    legacy: true,
     table: "AccessPoint",
     primaryKey: "id",
   },
   byAuthToken: {
     _meta: {
+      legacy: true,
       table: "AccessPoint",
       index: "byAuthToken",
       primaryKey: "authToken",
@@ -40,6 +46,7 @@ export const AccessPointTable = {
   },
   byLocation: {
     _meta: {
+      legacy: true,
       table: "AccessPoint",
       index: "byLocation",
       primaryKey: "locationId",
@@ -47,6 +54,7 @@ export const AccessPointTable = {
   },
   byApiId: {
     _meta: {
+      legacy: true,
       table: "AccessPoint",
       index: "byApiId",
       primaryKey: "apiId",
@@ -56,11 +64,13 @@ export const AccessPointTable = {
 
 export const AccessPointTimesTable = {
   _meta: {
+    legacy: true,
     table: "AccessPointTimes",
     primaryKey: "id",
   },
   byDoorAccessPointId: {
     _meta: {
+      legacy: true,
       table: "AccessPointTimes",
       index: "byDoorAccessPointId",
       primaryKey: "accessPointId",
@@ -68,6 +78,7 @@ export const AccessPointTimesTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "AccessPointTimes",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -77,11 +88,13 @@ export const AccessPointTimesTable = {
 
 export const ActionNotificationTable = {
   _meta: {
+    legacy: true,
     table: "ActionNotification",
     primaryKey: "id",
   },
   byNotificationId: {
     _meta: {
+      legacy: true,
       table: "ActionNotification",
       index: "byNotificationId",
       primaryKey: "notificationId",
@@ -89,6 +102,7 @@ export const ActionNotificationTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "ActionNotification",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -98,11 +112,13 @@ export const ActionNotificationTable = {
 
 export const AuditOperationTable = {
   _meta: {
+    legacy: true,
     table: "AuditOperation",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "AuditOperation",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -113,11 +129,13 @@ export const AuditOperationTable = {
 
 export const AuditVisitLogTable = {
   _meta: {
+    legacy: true,
     table: "AuditVisitLog",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "AuditVisitLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -126,6 +144,7 @@ export const AuditVisitLogTable = {
   },
   byClickedBy: {
     _meta: {
+      legacy: true,
       table: "AuditVisitLog",
       index: "byClickedBy",
       primaryKey: "clickedBy",
@@ -134,6 +153,7 @@ export const AuditVisitLogTable = {
   },
   byType: {
     _meta: {
+      legacy: true,
       table: "AuditVisitLog",
       index: "byType",
       primaryKey: "type",
@@ -143,11 +163,13 @@ export const AuditVisitLogTable = {
 
 export const BatchPaymentTable = {
   _meta: {
+    legacy: true,
     table: "BatchPayment",
     primaryKey: "id",
   },
   byToken: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byToken",
       primaryKey: "token",
@@ -155,6 +177,7 @@ export const BatchPaymentTable = {
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -162,6 +185,7 @@ export const BatchPaymentTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -169,6 +193,7 @@ export const BatchPaymentTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -176,6 +201,7 @@ export const BatchPaymentTable = {
   },
   byDebitDate: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byDebitDate",
       primaryKey: "debitDate",
@@ -184,6 +210,7 @@ export const BatchPaymentTable = {
   },
   byMemberContractBillingId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byMemberContractBillingId",
       primaryKey: "memberContractBillingId",
@@ -191,6 +218,7 @@ export const BatchPaymentTable = {
   },
   byBatchId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byBatchId",
       primaryKey: "batchId",
@@ -199,6 +227,7 @@ export const BatchPaymentTable = {
   },
   byUniqueIdentifier: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byUniqueIdentifier",
       primaryKey: "uniqueIdentifier",
@@ -206,6 +235,7 @@ export const BatchPaymentTable = {
   },
   byBatchBrandId: {
     _meta: {
+      legacy: true,
       table: "BatchPayment",
       index: "byBatchBrandId",
       primaryKey: "batchBrandId",
@@ -216,11 +246,13 @@ export const BatchPaymentTable = {
 
 export const BillingCreditTable = {
   _meta: {
+    legacy: true,
     table: "BillingCredit",
     primaryKey: "id",
   },
   byMemberContractBillingId: {
     _meta: {
+      legacy: true,
       table: "BillingCredit",
       index: "byMemberContractBillingId",
       primaryKey: "memberContractBillingId",
@@ -230,11 +262,13 @@ export const BillingCreditTable = {
 
 export const BrandTable = {
   _meta: {
+    legacy: true,
     table: "Brand",
     primaryKey: "id",
   },
   brandByName: {
     _meta: {
+      legacy: true,
       table: "Brand",
       index: "brandByName",
       primaryKey: "name",
@@ -244,11 +278,13 @@ export const BrandTable = {
 
 export const CardNumberTable = {
   _meta: {
+    legacy: true,
     table: "CardNumber",
     primaryKey: "id",
   },
   byCardNumber: {
     _meta: {
+      legacy: true,
       table: "CardNumber",
       index: "byCardNumber",
       primaryKey: "cardNumber",
@@ -256,6 +292,7 @@ export const CardNumberTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "CardNumber",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -265,11 +302,13 @@ export const CardNumberTable = {
 
 export const ClassBookingTable = {
   _meta: {
+    legacy: true,
     table: "ClassBooking",
     primaryKey: "id",
   },
   byClassScheduleId: {
     _meta: {
+      legacy: true,
       table: "ClassBooking",
       index: "byClassScheduleId",
       primaryKey: "classScheduleId",
@@ -278,6 +317,7 @@ export const ClassBookingTable = {
   },
   byCasualEmail: {
     _meta: {
+      legacy: true,
       table: "ClassBooking",
       index: "byCasualEmail",
       primaryKey: "casualEmail",
@@ -285,6 +325,7 @@ export const ClassBookingTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "ClassBooking",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -293,6 +334,7 @@ export const ClassBookingTable = {
   },
   byWaitlistClassScheduleId: {
     _meta: {
+      legacy: true,
       table: "ClassBooking",
       index: "byWaitlistClassScheduleId",
       primaryKey: "waitlistClassScheduleId",
@@ -303,6 +345,7 @@ export const ClassBookingTable = {
 
 export const ClassInstructorTable = {
   _meta: {
+    legacy: true,
     table: "ClassInstructor",
     primaryKey: "id",
   },
@@ -310,11 +353,13 @@ export const ClassInstructorTable = {
 
 export const ClassScheduleTable = {
   _meta: {
+    legacy: true,
     table: "ClassSchedule",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "ClassSchedule",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -323,6 +368,7 @@ export const ClassScheduleTable = {
   },
   bySeriesId: {
     _meta: {
+      legacy: true,
       table: "ClassSchedule",
       index: "bySeriesId",
       primaryKey: "seriesId",
@@ -331,6 +377,7 @@ export const ClassScheduleTable = {
   },
   byClassTemplateId: {
     _meta: {
+      legacy: true,
       table: "ClassSchedule",
       index: "byClassTemplateId",
       primaryKey: "classTemplateId",
@@ -341,11 +388,13 @@ export const ClassScheduleTable = {
 
 export const ClassTemplateTable = {
   _meta: {
+    legacy: true,
     table: "ClassTemplate",
     primaryKey: "id",
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "ClassTemplate",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -356,11 +405,13 @@ export const ClassTemplateTable = {
 
 export const DataStorageTable = {
   _meta: {
+    legacy: true,
     table: "DataStorage",
     primaryKey: "id",
   },
   byTargetId: {
     _meta: {
+      legacy: true,
       table: "DataStorage",
       index: "byTargetId",
       primaryKey: "targetId",
@@ -371,11 +422,13 @@ export const DataStorageTable = {
 
 export const DebtCollectionTable = {
   _meta: {
+    legacy: true,
     table: "DebtCollection",
     primaryKey: "id",
   },
   byContractId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byContractId",
       primaryKey: "contractId",
@@ -383,6 +436,7 @@ export const DebtCollectionTable = {
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -391,6 +445,7 @@ export const DebtCollectionTable = {
   },
   byGroupId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byGroupId",
       primaryKey: "groupId",
@@ -398,6 +453,7 @@ export const DebtCollectionTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -406,6 +462,7 @@ export const DebtCollectionTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -413,6 +470,7 @@ export const DebtCollectionTable = {
   },
   byLastBillingId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byLastBillingId",
       primaryKey: "lastBillingId",
@@ -420,6 +478,7 @@ export const DebtCollectionTable = {
   },
   byMemberContractLogId: {
     _meta: {
+      legacy: true,
       table: "DebtCollection",
       index: "byMemberContractLogId",
       primaryKey: "memberContractLogId",
@@ -429,11 +488,13 @@ export const DebtCollectionTable = {
 
 export const DirectDebitLogTable = {
   _meta: {
+    legacy: true,
     table: "DirectDebitLog",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "DirectDebitLog",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -442,6 +503,7 @@ export const DirectDebitLogTable = {
   },
   byStaffId: {
     _meta: {
+      legacy: true,
       table: "DirectDebitLog",
       index: "byStaffId",
       primaryKey: "updatedBy",
@@ -449,6 +511,7 @@ export const DirectDebitLogTable = {
   },
   byMemberContractBillingId: {
     _meta: {
+      legacy: true,
       table: "DirectDebitLog",
       index: "byMemberContractBillingId",
       primaryKey: "billingId",
@@ -459,11 +522,13 @@ export const DirectDebitLogTable = {
 
 export const DoorAccessCodeTable = {
   _meta: {
+    legacy: true,
     table: "DoorAccessCode",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "DoorAccessCode",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -473,11 +538,13 @@ export const DoorAccessCodeTable = {
 
 export const DoorAccessLogTable = {
   _meta: {
+    legacy: true,
     table: "DoorAccessLog",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "DoorAccessLog",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -485,6 +552,7 @@ export const DoorAccessLogTable = {
   },
   byCreatedAt: {
     _meta: {
+      legacy: true,
       table: "DoorAccessLog",
       index: "byCreatedAt",
       primaryKey: "createdAt",
@@ -492,6 +560,7 @@ export const DoorAccessLogTable = {
   },
   byMember: {
     _meta: {
+      legacy: true,
       table: "DoorAccessLog",
       index: "byMember",
       primaryKey: "memberId",
@@ -500,6 +569,7 @@ export const DoorAccessLogTable = {
   },
   byState: {
     _meta: {
+      legacy: true,
       table: "DoorAccessLog",
       index: "byState",
       primaryKey: "locationState",
@@ -509,11 +579,13 @@ export const DoorAccessLogTable = {
 
 export const DoorConnectionTable = {
   _meta: {
+    legacy: true,
     table: "DoorConnection",
     primaryKey: "id",
   },
   byConfigId: {
     _meta: {
+      legacy: true,
       table: "DoorConnection",
       index: "byConfigId",
       primaryKey: "configurationId",
@@ -523,11 +595,13 @@ export const DoorConnectionTable = {
 
 export const FeatureTable = {
   _meta: {
+    legacy: true,
     table: "Feature",
     primaryKey: "id",
   },
   featuresById: {
     _meta: {
+      legacy: true,
       table: "Feature",
       index: "featuresById",
       primaryKey: "id",
@@ -537,11 +611,13 @@ export const FeatureTable = {
 
 export const FitnessPassportLocationTable = {
   _meta: {
+    legacy: true,
     table: "FitnessPassportLocation",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "FitnessPassportLocation",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -551,11 +627,13 @@ export const FitnessPassportLocationTable = {
 
 export const FitnessPassportRequestLogTable = {
   _meta: {
+    legacy: true,
     table: "FitnessPassportRequestLog",
     primaryKey: "id",
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "FitnessPassportRequestLog",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -563,6 +641,7 @@ export const FitnessPassportRequestLogTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "FitnessPassportRequestLog",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -570,6 +649,7 @@ export const FitnessPassportRequestLogTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "FitnessPassportRequestLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -577,6 +657,7 @@ export const FitnessPassportRequestLogTable = {
   },
   byFitnessPassportNumber: {
     _meta: {
+      legacy: true,
       table: "FitnessPassportRequestLog",
       index: "byFitnessPassportNumber",
       primaryKey: "fitnessPassportNumber",
@@ -586,12 +667,14 @@ export const FitnessPassportRequestLogTable = {
 
 export const GeoPointTable = {
   _meta: {
+    legacy: true,
     table: "GeoPoint",
     primaryKey: "hashKey",
     sortKey: "rangeKey",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "GeoPoint",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -599,6 +682,7 @@ export const GeoPointTable = {
   },
   "geohash-index": {
     _meta: {
+      legacy: true,
       table: "GeoPoint",
       index: "geohash-index",
       primaryKey: "hashKey",
@@ -609,11 +693,13 @@ export const GeoPointTable = {
 
 export const GroupTable = {
   _meta: {
+    legacy: true,
     table: "Group",
     primaryKey: "id",
   },
   byName: {
     _meta: {
+      legacy: true,
       table: "Group",
       index: "byName",
       primaryKey: "name",
@@ -623,11 +709,13 @@ export const GroupTable = {
 
 export const GroupLocationTable = {
   _meta: {
+    legacy: true,
     table: "GroupLocation",
     primaryKey: "id",
   },
   byGroup: {
     _meta: {
+      legacy: true,
       table: "GroupLocation",
       index: "byGroup",
       primaryKey: "groupId",
@@ -635,6 +723,7 @@ export const GroupLocationTable = {
   },
   byLocation: {
     _meta: {
+      legacy: true,
       table: "GroupLocation",
       index: "byLocation",
       primaryKey: "locationId",
@@ -644,11 +733,13 @@ export const GroupLocationTable = {
 
 export const GroupStaffTable = {
   _meta: {
+    legacy: true,
     table: "GroupStaff",
     primaryKey: "id",
   },
   byGroup: {
     _meta: {
+      legacy: true,
       table: "GroupStaff",
       index: "byGroup",
       primaryKey: "groupId",
@@ -656,6 +747,7 @@ export const GroupStaffTable = {
   },
   byStaff: {
     _meta: {
+      legacy: true,
       table: "GroupStaff",
       index: "byStaff",
       primaryKey: "staffId",
@@ -665,11 +757,13 @@ export const GroupStaffTable = {
 
 export const HealthQuestionnaireTable = {
   _meta: {
+    legacy: true,
     table: "HealthQuestionnaire",
     primaryKey: "id",
   },
   healthQuestionnaireByBrandId: {
     _meta: {
+      legacy: true,
       table: "HealthQuestionnaire",
       index: "healthQuestionnaireByBrandId",
       primaryKey: "brandId",
@@ -679,11 +773,13 @@ export const HealthQuestionnaireTable = {
 
 export const InstructorCredentialTable = {
   _meta: {
+    legacy: true,
     table: "InstructorCredential",
     primaryKey: "id",
   },
   byInstructorId: {
     _meta: {
+      legacy: true,
       table: "InstructorCredential",
       index: "byInstructorId",
       primaryKey: "instructorId",
@@ -694,11 +790,13 @@ export const InstructorCredentialTable = {
 
 export const LocationTable = {
   _meta: {
+    legacy: true,
     table: "Location",
     primaryKey: "id",
   },
   locationByState: {
     _meta: {
+      legacy: true,
       table: "Location",
       index: "locationByState",
       primaryKey: "state",
@@ -706,6 +804,7 @@ export const LocationTable = {
   },
   locationByBrand: {
     _meta: {
+      legacy: true,
       table: "Location",
       index: "locationByBrand",
       primaryKey: "brandId",
@@ -715,11 +814,13 @@ export const LocationTable = {
 
 export const LocationAccessTimesTable = {
   _meta: {
+    legacy: true,
     table: "LocationAccessTimes",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "LocationAccessTimes",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -730,11 +831,13 @@ export const LocationAccessTimesTable = {
 
 export const LocationAuditOperationTable = {
   _meta: {
+    legacy: true,
     table: "LocationAuditOperation",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "LocationAuditOperation",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -744,11 +847,13 @@ export const LocationAuditOperationTable = {
 
 export const LocationFeatureTable = {
   _meta: {
+    legacy: true,
     table: "LocationFeature",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "LocationFeature",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -756,6 +861,7 @@ export const LocationFeatureTable = {
   },
   locationFeaturesById: {
     _meta: {
+      legacy: true,
       table: "LocationFeature",
       index: "locationFeaturesById",
       primaryKey: "id",
@@ -765,11 +871,13 @@ export const LocationFeatureTable = {
 
 export const LocationMaintenanceTable = {
   _meta: {
+    legacy: true,
     table: "LocationMaintenance",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "LocationMaintenance",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -779,11 +887,13 @@ export const LocationMaintenanceTable = {
 
 export const LocationStudioTable = {
   _meta: {
+    legacy: true,
     table: "LocationStudio",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "LocationStudio",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -793,11 +903,13 @@ export const LocationStudioTable = {
 
 export const MemberTable = {
   _meta: {
+    legacy: true,
     table: "Member",
     primaryKey: "memberId",
   },
   byMemberType: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "byMemberType",
       primaryKey: "type",
@@ -806,6 +918,7 @@ export const MemberTable = {
   },
   memberByMobile: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByMobile",
       primaryKey: "mobileNumber",
@@ -813,6 +926,7 @@ export const MemberTable = {
   },
   memberByEmail: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByEmail",
       primaryKey: "email",
@@ -820,6 +934,7 @@ export const MemberTable = {
   },
   memberByAliasId: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByAliasId",
       primaryKey: "aliasMemberId",
@@ -827,6 +942,7 @@ export const MemberTable = {
   },
   memberByHomeLocationId: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByHomeLocationId",
       primaryKey: "homeLocationId",
@@ -834,6 +950,7 @@ export const MemberTable = {
   },
   memberByNickname: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByNickname",
       primaryKey: "nickname",
@@ -841,6 +958,7 @@ export const MemberTable = {
   },
   memberBySurname: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberBySurname",
       primaryKey: "surname",
@@ -848,6 +966,7 @@ export const MemberTable = {
   },
   memberByBrandId: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByBrandId",
       primaryKey: "brandId",
@@ -856,6 +975,7 @@ export const MemberTable = {
   },
   memberByName: {
     _meta: {
+      legacy: true,
       table: "Member",
       index: "memberByName",
       primaryKey: "givenName",
@@ -865,11 +985,13 @@ export const MemberTable = {
 
 export const MemberActivityTable = {
   _meta: {
+    legacy: true,
     table: "MemberActivity",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberActivity",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -880,11 +1002,13 @@ export const MemberActivityTable = {
 
 export const MemberBlockTable = {
   _meta: {
+    legacy: true,
     table: "MemberBlock",
     primaryKey: "id",
   },
   byBlockTo: {
     _meta: {
+      legacy: true,
       table: "MemberBlock",
       index: "byBlockTo",
       primaryKey: "blockTo",
@@ -892,6 +1016,7 @@ export const MemberBlockTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberBlock",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -900,6 +1025,7 @@ export const MemberBlockTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberBlock",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -907,6 +1033,7 @@ export const MemberBlockTable = {
   },
   byBlockFrom: {
     _meta: {
+      legacy: true,
       table: "MemberBlock",
       index: "byBlockFrom",
       primaryKey: "blockFrom",
@@ -917,11 +1044,13 @@ export const MemberBlockTable = {
 
 export const MemberContractTable = {
   _meta: {
+    legacy: true,
     table: "MemberContract",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -929,6 +1058,7 @@ export const MemberContractTable = {
   },
   byMembershipLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byMembershipLocationId",
       primaryKey: "membershipLocationId",
@@ -936,6 +1066,7 @@ export const MemberContractTable = {
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -943,6 +1074,7 @@ export const MemberContractTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -950,6 +1082,7 @@ export const MemberContractTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -957,6 +1090,7 @@ export const MemberContractTable = {
   },
   byStartDateTime: {
     _meta: {
+      legacy: true,
       table: "MemberContract",
       index: "byStartDateTime",
       primaryKey: "startDateTime",
@@ -966,11 +1100,13 @@ export const MemberContractTable = {
 
 export const MemberContractBillingTable = {
   _meta: {
+    legacy: true,
     table: "MemberContractBilling",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -978,6 +1114,7 @@ export const MemberContractBillingTable = {
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -985,6 +1122,7 @@ export const MemberContractBillingTable = {
   },
   byMembershipLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byMembershipLocationId",
       primaryKey: "membershipLocationId",
@@ -992,6 +1130,7 @@ export const MemberContractBillingTable = {
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -999,6 +1138,7 @@ export const MemberContractBillingTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1007,6 +1147,7 @@ export const MemberContractBillingTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1014,6 +1155,7 @@ export const MemberContractBillingTable = {
   },
   byDebitDate: {
     _meta: {
+      legacy: true,
       table: "MemberContractBilling",
       index: "byDebitDate",
       primaryKey: "debitDate",
@@ -1023,11 +1165,13 @@ export const MemberContractBillingTable = {
 
 export const MemberContractLogTable = {
   _meta: {
+    legacy: true,
     table: "MemberContractLog",
     primaryKey: "id",
   },
   byLogType: {
     _meta: {
+      legacy: true,
       table: "MemberContractLog",
       index: "byLogType",
       primaryKey: "logType",
@@ -1036,6 +1180,7 @@ export const MemberContractLogTable = {
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "MemberContractLog",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1043,6 +1188,7 @@ export const MemberContractLogTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberContractLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1053,11 +1199,13 @@ export const MemberContractLogTable = {
 
 export const MemberContractSuspensionTable = {
   _meta: {
+    legacy: true,
     table: "MemberContractSuspension",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspension",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1065,6 +1213,7 @@ export const MemberContractSuspensionTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspension",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1072,6 +1221,7 @@ export const MemberContractSuspensionTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspension",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1082,11 +1232,13 @@ export const MemberContractSuspensionTable = {
 
 export const MemberContractSuspensionLogTable = {
   _meta: {
+    legacy: true,
     table: "MemberContractSuspensionLog",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspensionLog",
       index: "byMemberContractId",
       primaryKey: "contractId",
@@ -1094,6 +1246,7 @@ export const MemberContractSuspensionLogTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspensionLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1101,6 +1254,7 @@ export const MemberContractSuspensionLogTable = {
   },
   byMemberSuspensionId: {
     _meta: {
+      legacy: true,
       table: "MemberContractSuspensionLog",
       index: "byMemberSuspensionId",
       primaryKey: "suspensionId",
@@ -1110,11 +1264,13 @@ export const MemberContractSuspensionLogTable = {
 
 export const MemberDeviceTable = {
   _meta: {
+    legacy: true,
     table: "MemberDevice",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberDevice",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1123,6 +1279,7 @@ export const MemberDeviceTable = {
   },
   memberDeviceByEmail: {
     _meta: {
+      legacy: true,
       table: "MemberDevice",
       index: "memberDeviceByEmail",
       primaryKey: "email",
@@ -1133,11 +1290,13 @@ export const MemberDeviceTable = {
 
 export const MemberOutstandingBalanceLogTable = {
   _meta: {
+    legacy: true,
     table: "MemberOutstandingBalanceLog",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "MemberOutstandingBalanceLog",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1145,6 +1304,7 @@ export const MemberOutstandingBalanceLogTable = {
   },
   byAction: {
     _meta: {
+      legacy: true,
       table: "MemberOutstandingBalanceLog",
       index: "byAction",
       primaryKey: "action",
@@ -1153,6 +1313,7 @@ export const MemberOutstandingBalanceLogTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberOutstandingBalanceLog",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1160,6 +1321,7 @@ export const MemberOutstandingBalanceLogTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberOutstandingBalanceLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1169,11 +1331,13 @@ export const MemberOutstandingBalanceLogTable = {
 
 export const MemberReceiptTable = {
   _meta: {
+    legacy: true,
     table: "MemberReceipt",
     primaryKey: "id",
   },
   byBatchPaymentId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byBatchPaymentId",
       primaryKey: "batchPaymentId",
@@ -1181,6 +1345,7 @@ export const MemberReceiptTable = {
   },
   byContractId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byContractId",
       primaryKey: "contractId",
@@ -1189,6 +1354,7 @@ export const MemberReceiptTable = {
   },
   byBillingId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byBillingId",
       primaryKey: "billingId",
@@ -1196,6 +1362,7 @@ export const MemberReceiptTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1203,6 +1370,7 @@ export const MemberReceiptTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1211,6 +1379,7 @@ export const MemberReceiptTable = {
   },
   byTransactionId: {
     _meta: {
+      legacy: true,
       table: "MemberReceipt",
       index: "byTransactionId",
       primaryKey: "transactionId",
@@ -1220,11 +1389,13 @@ export const MemberReceiptTable = {
 
 export const MemberRequestTable = {
   _meta: {
+    legacy: true,
     table: "MemberRequest",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "MemberRequest",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1234,11 +1405,13 @@ export const MemberRequestTable = {
 
 export const MembershipTable = {
   _meta: {
+    legacy: true,
     table: "Membership",
     primaryKey: "id",
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "Membership",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -1248,11 +1421,13 @@ export const MembershipTable = {
 
 export const MembershipActivationDateTable = {
   _meta: {
+    legacy: true,
     table: "MembershipActivationDate",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "MembershipActivationDate",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -1262,11 +1437,13 @@ export const MembershipActivationDateTable = {
 
 export const MembershipLocationTable = {
   _meta: {
+    legacy: true,
     table: "MembershipLocation",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "MembershipLocation",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -1274,6 +1451,7 @@ export const MembershipLocationTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MembershipLocation",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1283,11 +1461,13 @@ export const MembershipLocationTable = {
 
 export const MembershipLocationLogTable = {
   _meta: {
+    legacy: true,
     table: "MembershipLocationLog",
     primaryKey: "id",
   },
   byMembership: {
     _meta: {
+      legacy: true,
       table: "MembershipLocationLog",
       index: "byMembership",
       primaryKey: "membershipId",
@@ -1295,6 +1475,7 @@ export const MembershipLocationLogTable = {
   },
   byMembershipLocationId: {
     _meta: {
+      legacy: true,
       table: "MembershipLocationLog",
       index: "byMembershipLocationId",
       primaryKey: "membershipLocationId",
@@ -1302,6 +1483,7 @@ export const MembershipLocationLogTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "MembershipLocationLog",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1309,6 +1491,7 @@ export const MembershipLocationLogTable = {
   },
   byCreatedBy: {
     _meta: {
+      legacy: true,
       table: "MembershipLocationLog",
       index: "byCreatedBy",
       primaryKey: "createdBy",
@@ -1318,11 +1501,13 @@ export const MembershipLocationLogTable = {
 
 export const MembershipPaymentTypeTable = {
   _meta: {
+    legacy: true,
     table: "MembershipPaymentType",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "MembershipPaymentType",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -1332,6 +1517,7 @@ export const MembershipPaymentTypeTable = {
 
 export const NicknameSuggestionTable = {
   _meta: {
+    legacy: true,
     table: "NicknameSuggestion",
     primaryKey: "id",
   },
@@ -1339,11 +1525,13 @@ export const NicknameSuggestionTable = {
 
 export const NoteTable = {
   _meta: {
+    legacy: true,
     table: "Note",
     primaryKey: "id",
   },
   byMember: {
     _meta: {
+      legacy: true,
       table: "Note",
       index: "byMember",
       primaryKey: "memberId",
@@ -1354,11 +1542,13 @@ export const NoteTable = {
 
 export const NotificationTable = {
   _meta: {
+    legacy: true,
     table: "Notification",
     primaryKey: "id",
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "Notification",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -1367,6 +1557,7 @@ export const NotificationTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "Notification",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1375,6 +1566,7 @@ export const NotificationTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "Notification",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1383,6 +1575,7 @@ export const NotificationTable = {
   },
   byEmail: {
     _meta: {
+      legacy: true,
       table: "Notification",
       index: "byEmail",
       primaryKey: "email",
@@ -1391,6 +1584,7 @@ export const NotificationTable = {
   },
   byEventType: {
     _meta: {
+      legacy: true,
       table: "Notification",
       index: "byEventType",
       primaryKey: "eventType",
@@ -1401,11 +1595,13 @@ export const NotificationTable = {
 
 export const PaymentGatewayLogTable = {
   _meta: {
+    legacy: true,
     table: "PaymentGatewayLog",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1413,6 +1609,7 @@ export const PaymentGatewayLogTable = {
   },
   bySuspensionBillingCreditId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "bySuspensionBillingCreditId",
       primaryKey: "suspensionBillingCreditId",
@@ -1420,6 +1617,7 @@ export const PaymentGatewayLogTable = {
   },
   byBillingId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "byBillingId",
       primaryKey: "billingId",
@@ -1427,6 +1625,7 @@ export const PaymentGatewayLogTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1435,6 +1634,7 @@ export const PaymentGatewayLogTable = {
   },
   byTransactionLogId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "byTransactionLogId",
       primaryKey: "transactionLogId",
@@ -1442,6 +1642,7 @@ export const PaymentGatewayLogTable = {
   },
   byMemberContractSuspensionId: {
     _meta: {
+      legacy: true,
       table: "PaymentGatewayLog",
       index: "byMemberContractSuspensionId",
       primaryKey: "memberContractSuspensionId",
@@ -1451,11 +1652,13 @@ export const PaymentGatewayLogTable = {
 
 export const PaymentInformationTable = {
   _meta: {
+    legacy: true,
     table: "PaymentInformation",
     primaryKey: "id",
   },
   byVivaPaymentInformationId: {
     _meta: {
+      legacy: true,
       table: "PaymentInformation",
       index: "byVivaPaymentInformationId",
       primaryKey: "vivaPaymentInformationId",
@@ -1463,6 +1666,7 @@ export const PaymentInformationTable = {
   },
   byTokenId: {
     _meta: {
+      legacy: true,
       table: "PaymentInformation",
       index: "byTokenId",
       primaryKey: "tokenId",
@@ -1470,6 +1674,7 @@ export const PaymentInformationTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "PaymentInformation",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1477,6 +1682,7 @@ export const PaymentInformationTable = {
   },
   byCardToken: {
     _meta: {
+      legacy: true,
       table: "PaymentInformation",
       index: "byCardToken",
       primaryKey: "cardToken",
@@ -1486,11 +1692,13 @@ export const PaymentInformationTable = {
 
 export const PermissionTable = {
   _meta: {
+    legacy: true,
     table: "Permission",
     primaryKey: "id",
   },
   byPermissions: {
     _meta: {
+      legacy: true,
       table: "Permission",
       index: "byPermissions",
       primaryKey: "permissionName",
@@ -1500,11 +1708,13 @@ export const PermissionTable = {
 
 export const ProspectTable = {
   _meta: {
+    legacy: true,
     table: "Prospect",
     primaryKey: "id",
   },
   prospectByEmail: {
     _meta: {
+      legacy: true,
       table: "Prospect",
       index: "prospectByEmail",
       primaryKey: "email",
@@ -1512,6 +1722,7 @@ export const ProspectTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "Prospect",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1521,11 +1732,13 @@ export const ProspectTable = {
 
 export const QuestionAnswerTable = {
   _meta: {
+    legacy: true,
     table: "QuestionAnswer",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "QuestionAnswer",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1535,11 +1748,13 @@ export const QuestionAnswerTable = {
 
 export const RefundTransactionTable = {
   _meta: {
+    legacy: true,
     table: "RefundTransaction",
     primaryKey: "id",
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "RefundTransaction",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -1548,6 +1763,7 @@ export const RefundTransactionTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "RefundTransaction",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1556,6 +1772,7 @@ export const RefundTransactionTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "RefundTransaction",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1564,6 +1781,7 @@ export const RefundTransactionTable = {
   },
   byMemberContractBillingId: {
     _meta: {
+      legacy: true,
       table: "RefundTransaction",
       index: "byMemberContractBillingId",
       primaryKey: "memberContractBillingId",
@@ -1573,11 +1791,13 @@ export const RefundTransactionTable = {
 
 export const RejectionPaymentTable = {
   _meta: {
+    legacy: true,
     table: "RejectionPayment",
     primaryKey: "id",
   },
   byBatchPaymentId: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byBatchPaymentId",
       primaryKey: "batchPaymentId",
@@ -1585,6 +1805,7 @@ export const RejectionPaymentTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1592,6 +1813,7 @@ export const RejectionPaymentTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1599,6 +1821,7 @@ export const RejectionPaymentTable = {
   },
   byDebitDate: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byDebitDate",
       primaryKey: "debitDate",
@@ -1606,6 +1829,7 @@ export const RejectionPaymentTable = {
   },
   byMemberContractBillingId: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byMemberContractBillingId",
       primaryKey: "memberContractBillingId",
@@ -1613,6 +1837,7 @@ export const RejectionPaymentTable = {
   },
   byBatchId: {
     _meta: {
+      legacy: true,
       table: "RejectionPayment",
       index: "byBatchId",
       primaryKey: "batchId",
@@ -1622,6 +1847,7 @@ export const RejectionPaymentTable = {
 
 export const RejectionProcessTable = {
   _meta: {
+    legacy: true,
     table: "RejectionProcess",
     primaryKey: "id",
   },
@@ -1629,11 +1855,13 @@ export const RejectionProcessTable = {
 
 export const RoleTable = {
   _meta: {
+    legacy: true,
     table: "Role",
     primaryKey: "id",
   },
   byRoleName: {
     _meta: {
+      legacy: true,
       table: "Role",
       index: "byRoleName",
       primaryKey: "roleName",
@@ -1643,11 +1871,13 @@ export const RoleTable = {
 
 export const RoleAndPermissionTable = {
   _meta: {
+    legacy: true,
     table: "RoleAndPermission",
     primaryKey: "id",
   },
   byPermission: {
     _meta: {
+      legacy: true,
       table: "RoleAndPermission",
       index: "byPermission",
       primaryKey: "permissionId",
@@ -1655,6 +1885,7 @@ export const RoleAndPermissionTable = {
   },
   byRole: {
     _meta: {
+      legacy: true,
       table: "RoleAndPermission",
       index: "byRole",
       primaryKey: "roleId",
@@ -1664,11 +1895,13 @@ export const RoleAndPermissionTable = {
 
 export const SettlementReportTable = {
   _meta: {
+    legacy: true,
     table: "SettlementReport",
     primaryKey: "id",
   },
   bySettlementInvoiceId: {
     _meta: {
+      legacy: true,
       table: "SettlementReport",
       index: "bySettlementInvoiceId",
       primaryKey: "settlementInvoiceId",
@@ -1676,6 +1909,7 @@ export const SettlementReportTable = {
   },
   byBrandId: {
     _meta: {
+      legacy: true,
       table: "SettlementReport",
       index: "byBrandId",
       primaryKey: "brandId",
@@ -1683,6 +1917,7 @@ export const SettlementReportTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "SettlementReport",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1692,11 +1927,13 @@ export const SettlementReportTable = {
 
 export const SmsIncomingTable = {
   _meta: {
+    legacy: true,
     table: "SmsIncoming",
     primaryKey: "id",
   },
   bySender: {
     _meta: {
+      legacy: true,
       table: "SmsIncoming",
       index: "bySender",
       primaryKey: "from",
@@ -1705,6 +1942,7 @@ export const SmsIncomingTable = {
   },
   byDestination: {
     _meta: {
+      legacy: true,
       table: "SmsIncoming",
       index: "byDestination",
       primaryKey: "to",
@@ -1715,11 +1953,13 @@ export const SmsIncomingTable = {
 
 export const SmsOutboxTable = {
   _meta: {
+    legacy: true,
     table: "SmsOutbox",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "SmsOutbox",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1728,6 +1968,7 @@ export const SmsOutboxTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "SmsOutbox",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1736,6 +1977,7 @@ export const SmsOutboxTable = {
   },
   byIdentityName: {
     _meta: {
+      legacy: true,
       table: "SmsOutbox",
       index: "byIdentityName",
       primaryKey: "identityName",
@@ -1746,6 +1988,7 @@ export const SmsOutboxTable = {
 
 export const SmsResultTable = {
   _meta: {
+    legacy: true,
     table: "SmsResult",
     primaryKey: "id",
   },
@@ -1753,11 +1996,13 @@ export const SmsResultTable = {
 
 export const StaffLocationAccessTable = {
   _meta: {
+    legacy: true,
     table: "StaffLocationAccess",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "StaffLocationAccess",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1768,11 +2013,13 @@ export const StaffLocationAccessTable = {
 
 export const StatisticsTable = {
   _meta: {
+    legacy: true,
     table: "Statistics",
     primaryKey: "id",
   },
   byType: {
     _meta: {
+      legacy: true,
       table: "Statistics",
       index: "byType",
       primaryKey: "type",
@@ -1782,11 +2029,13 @@ export const StatisticsTable = {
 
 export const TransactionTable = {
   _meta: {
+    legacy: true,
     table: "Transaction",
     primaryKey: "id",
   },
   ByMemberId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "ByMemberId",
       primaryKey: "memberId",
@@ -1795,6 +2044,7 @@ export const TransactionTable = {
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1802,6 +2052,7 @@ export const TransactionTable = {
   },
   bySuspensionBillingCreditId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "bySuspensionBillingCreditId",
       primaryKey: "suspensionBillingCreditId",
@@ -1809,6 +2060,7 @@ export const TransactionTable = {
   },
   byOrderId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byOrderId",
       primaryKey: "orderId",
@@ -1816,6 +2068,7 @@ export const TransactionTable = {
   },
   byPaymentGatewayLogId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byPaymentGatewayLogId",
       primaryKey: "paymentGatewayLogId",
@@ -1823,6 +2076,7 @@ export const TransactionTable = {
   },
   byBillingCreditId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byBillingCreditId",
       primaryKey: "billingCreditId",
@@ -1830,6 +2084,7 @@ export const TransactionTable = {
   },
   byMemberContractSuspensionId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byMemberContractSuspensionId",
       primaryKey: "memberContractSuspensionId",
@@ -1837,6 +2092,7 @@ export const TransactionTable = {
   },
   byTransactionId: {
     _meta: {
+      legacy: true,
       table: "Transaction",
       index: "byTransactionId",
       primaryKey: "transactionId",
@@ -1846,11 +2102,13 @@ export const TransactionTable = {
 
 export const VoucherTable = {
   _meta: {
+    legacy: true,
     table: "Voucher",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "Voucher",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -1858,6 +2116,7 @@ export const VoucherTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "Voucher",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1865,6 +2124,7 @@ export const VoucherTable = {
   },
   byVoucherCode: {
     _meta: {
+      legacy: true,
       table: "Voucher",
       index: "byVoucherCode",
       primaryKey: "voucherCode",
@@ -1872,6 +2132,7 @@ export const VoucherTable = {
   },
   byType: {
     _meta: {
+      legacy: true,
       table: "Voucher",
       index: "byType",
       primaryKey: "type",
@@ -1882,11 +2143,13 @@ export const VoucherTable = {
 
 export const VoucherInvitationTable = {
   _meta: {
+    legacy: true,
     table: "VoucherInvitation",
     primaryKey: "id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "VoucherInvitation",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1894,6 +2157,7 @@ export const VoucherInvitationTable = {
   },
   byVoucherId: {
     _meta: {
+      legacy: true,
       table: "VoucherInvitation",
       index: "byVoucherId",
       primaryKey: "voucherId",
@@ -1901,6 +2165,7 @@ export const VoucherInvitationTable = {
   },
   byDestination: {
     _meta: {
+      legacy: true,
       table: "VoucherInvitation",
       index: "byDestination",
       primaryKey: "destination",
@@ -1910,11 +2175,13 @@ export const VoucherInvitationTable = {
 
 export const VoucherLocationTable = {
   _meta: {
+    legacy: true,
     table: "VoucherLocation",
     primaryKey: "id",
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "VoucherLocation",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1922,6 +2189,7 @@ export const VoucherLocationTable = {
   },
   byVoucherId: {
     _meta: {
+      legacy: true,
       table: "VoucherLocation",
       index: "byVoucherId",
       primaryKey: "voucherId",
@@ -1931,11 +2199,13 @@ export const VoucherLocationTable = {
 
 export const VoucherMemberTable = {
   _meta: {
+    legacy: true,
     table: "VoucherMember",
     primaryKey: "id",
   },
   byMembershipId: {
     _meta: {
+      legacy: true,
       table: "VoucherMember",
       index: "byMembershipId",
       primaryKey: "membershipId",
@@ -1943,6 +2213,7 @@ export const VoucherMemberTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "VoucherMember",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1950,6 +2221,7 @@ export const VoucherMemberTable = {
   },
   byVoucherId: {
     _meta: {
+      legacy: true,
       table: "VoucherMember",
       index: "byVoucherId",
       primaryKey: "voucherId",
@@ -1959,11 +2231,13 @@ export const VoucherMemberTable = {
 
 export const consentFormDetailTable = {
   _meta: {
+    legacy: true,
     table: "consentFormDetail",
     primaryKey: "id",
   },
   byMemberContractId: {
     _meta: {
+      legacy: true,
       table: "consentFormDetail",
       index: "byMemberContractId",
       primaryKey: "memberContractId",
@@ -1971,6 +2245,7 @@ export const consentFormDetailTable = {
   },
   byLocationId: {
     _meta: {
+      legacy: true,
       table: "consentFormDetail",
       index: "byLocationId",
       primaryKey: "locationId",
@@ -1979,6 +2254,7 @@ export const consentFormDetailTable = {
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "consentFormDetail",
       index: "byMemberId",
       primaryKey: "memberId",
@@ -1988,11 +2264,13 @@ export const consentFormDetailTable = {
 
 export const juniorMemberGuardianDetailTable = {
   _meta: {
+    legacy: true,
     table: "juniorMemberGuardianDetail",
     primaryKey: "Id",
   },
   byMemberId: {
     _meta: {
+      legacy: true,
       table: "juniorMemberGuardianDetail",
       index: "byMemberId",
       primaryKey: "memberId",

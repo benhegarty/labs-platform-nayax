@@ -10,7 +10,7 @@ export const Sale = api({
   title: "Static QR Sale",
   description: "Sale of a static QR code transaction.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticSaleRequestSchema,
   responseSchema: staticSaleResponseSchema
 });

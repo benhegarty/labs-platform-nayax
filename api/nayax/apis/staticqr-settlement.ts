@@ -10,7 +10,7 @@ export const Settlement = api({
   title: "Static QR Settlement",
   description: "Settle a static QR code transaction.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticSettRequestSchema,
   responseSchema: staticSettResponseSchema
 });

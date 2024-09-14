@@ -10,7 +10,7 @@ export const Refund = api({
   title: "Static QR Refund",
   description: "Refund a static QR code transaction.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticRefundRequestSchema,
   responseSchema: staticRefundResponseSchema
 });

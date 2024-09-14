@@ -3,6 +3,7 @@ export type Filters = { [key: string]: string | boolean | number | null | undefi
 export type Table = {
   _meta: {
     table: string;
+    legacy?: boolean;
     primaryKey: string;
     sortKey?: string;
     index?: string;

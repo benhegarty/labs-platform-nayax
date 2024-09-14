@@ -10,7 +10,7 @@ export const Authorization = api({
   title: "Static QR Authorization",
   description: "Authorize a static QR code.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticAuthRequestSchema,
   responseSchema: staticAuthResponseSchema
 });

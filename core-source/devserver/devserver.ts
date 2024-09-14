@@ -7,7 +7,7 @@ import * as backend from "@labs/be.services";
 import { HandlerEvent, Role } from "@labs/core.backend/types";
 import { APIDefinition, AuthType } from "@labs/core.api/types";
 import { tunnelAuthBypass } from "./middleware/tunnel-auth-bypass";
-import { User } from "@labs/api/members/types/user";
+import { User } from "@labs/types";
 import { cognitoAuth } from "./middleware/cognito";
 import { apiKeyAuth } from "./middleware/api-key";
 import { validate } from "./middleware/validator";
@@ -213,12 +213,11 @@ async function main() {
   console.clear();
   console.log(chalk.blue.bold("------------------------------------------------------------\n"));
   console.log(chalk.bold.white(LABS_LOGO).split("\n").join("\n                  ") + "\n");
-  console.log(chalk.gray("                       Platform v1.0\n"));
+  console.log(chalk.gray("                       Platform v1.1\n"));
   console.log(chalk.blue.bold("------------------------------------------------------------\n"));
-  console.log(chalk.blue("AWS Profile : ") + process.env.AWS_PROFILE);
-  console.log(chalk.blue("Tunnel URL  : ") + (tunnelUrl));
-  console.log(chalk.blue("Port        : ") + port);
-  console.log(chalk.blue("Endpoints   : ") + endpointCount);
+  console.log(chalk.blue.bold(" AWS Profile: ") + process.env.AWS_PROFILE + chalk.blue.bold(`${" ".repeat(15-process.env.AWS_PROFILE!.length)}Endpoints: `) + endpointCount);
+  console.log();
+  console.log(chalk.blue(" "+tunnelUrl));
   console.log(chalk.blue.bold("\n------------------------------------------------------------\n"));
 
   app.listen(port);

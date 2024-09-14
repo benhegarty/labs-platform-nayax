@@ -10,7 +10,7 @@ export const Void = api({
   title: "Static QR Void",
   description: "Void a static QR code transaction.",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.PUBLIC,
   bodySchema: staticVoidRequestSchema,
   responseSchema: staticVoidResponseSchema
 });

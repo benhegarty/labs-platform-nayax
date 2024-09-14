@@ -232,7 +232,7 @@ export function slsFunctions(serviceName: string, apis: { [key: string]: APIDefi
       };
     }
     if (api._meta.backend.tables && api._meta.backend.tables.length > 0) {
-      const SUFFIX = environment.DYNAMODB_TABLE_SUFFIX;
+      const SUFFIX = environment.DYNAMODB_LEGACY_TABLE_SUFFIX;
       for (const table of api._meta.backend.tables) {
         ret[api.key].iamRoleStatementsName = `lp-role-${serviceName}.${api.key}`;
         ret[api.key].iamRoleStatements = [

@@ -8,6 +8,7 @@ export const Service: ServiceDefinition = {
 };
 
 // APIs
+import { StartAuthorization } from "./apis/start-authorization";
 import { Authorization } from "./apis/staticqr-authorization";
 import { Sale } from "./apis/staticqr-sale";
 import { Refund } from "./apis/staticqr-refund";
@@ -16,6 +17,7 @@ import { Void } from "./apis/staticqr-void";
 import { Settlement } from "./apis/staticqr-settlement";
 
 export const API = {
+  StartAuthorization,
   Authorization,
   Settlement,
   Cancel,
