@@ -76,7 +76,10 @@ async function createEndpoint<T extends APIDefinition>(
 
   // Add the main handler as the last middleware
   middlewares.push(async (req: Request, res: Response) => {
-    if (serviceName != "Documentation") console.log(`${chalk.blue.bold(api.method.toUpperCase() + ":")} ${chalk.bold(path)}\n`);
+    if (serviceName != "Documentation") {
+      console.log(`${chalk.blue.bold(api.method.toUpperCase() + ":")} ${chalk.bold(path)}\n`);
+    }
+
     try {
       const e: HandlerEvent<typeof req.params, typeof req.query, typeof req.body> = {
         params: req.params,
@@ -100,8 +103,9 @@ async function createEndpoint<T extends APIDefinition>(
             compact: false,
           }),
         );
-        console.log();
+        // console.log(chalk.gray("\n------------------------------------------------------------\n"));
       }
+      if (serviceName != "Documentation") console.log(chalk.blue.bold("LOGS: "));
 
       const result = await api._meta.backend.handler(e, {
         event: req,
@@ -118,7 +122,8 @@ async function createEndpoint<T extends APIDefinition>(
         });
       }
 
-      if (serviceName != "Documentation")
+      if (serviceName != "Documentation") {
+        // console.log(chalk.gray("\n------------------------------------------------------------\n"));
         console.log(chalk.blue.bold("RES:"),
           util.inspect(body, {
             depth: 3,
@@ -126,8 +131,9 @@ async function createEndpoint<T extends APIDefinition>(
             compact: false,
             maxArrayLength: 1,
             maxStringLength: 400,
-          }),
+          })
         );
+      }
       res.status(statusCode).set(headers).send(body);
     } catch (error) {
       console.error(chalk.bold("Error:", error.message));
@@ -171,7 +177,7 @@ async function main() {
     tunnel = JSON.parse(
       await fs.readFile("/home/developer/.vscode/cli/code_tunnel.json", "utf-8")
     );
-  // eslint-disable-next-line no-empty
+    // eslint-disable-next-line no-empty
   } catch (_) { }
 
   if (!tunnel || typeof (tunnel as { id?: string }).id !== "string") {
@@ -180,7 +186,7 @@ async function main() {
   }
 
   const tunnelId = (tunnel as { id: string }).id;
-  
+
   app.use(cors());
   app.use(bodyParser.json());
   app.use(tunnelAuthBypass());
@@ -204,7 +210,7 @@ async function main() {
     }
   }
 
-  app.get("*", function(req, res){
+  app.get("*", function (req, res) {
     res.status(404).json({ message: "Not Found" });
   });
 
@@ -215,9 +221,9 @@ async function main() {
   console.log(chalk.bold.white(LABS_LOGO).split("\n").join("\n                  ") + "\n");
   console.log(chalk.gray("                       Platform v1.1\n"));
   console.log(chalk.blue.bold("------------------------------------------------------------\n"));
-  console.log(chalk.blue.bold(" AWS Profile: ") + process.env.AWS_PROFILE + chalk.blue.bold(`${" ".repeat(15-process.env.AWS_PROFILE!.length)}Endpoints: `) + endpointCount);
+  console.log(chalk.blue.bold(" AWS Profile: ") + process.env.AWS_PROFILE + chalk.blue.bold(`${" ".repeat(15 - process.env.AWS_PROFILE!.length)}Endpoints: `) + endpointCount);
   console.log();
-  console.log(chalk.blue(" "+tunnelUrl));
+  console.log(chalk.blue(" " + tunnelUrl));
   console.log(chalk.blue.bold("\n------------------------------------------------------------\n"));
 
   app.listen(port);

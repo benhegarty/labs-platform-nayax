@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SchemaType, Key } from "../../types";
+import { SchemaType, Index, PopulatedFields } from "@labs/core.database/single-table/types";
 import { LocationSchema } from "../location";
 
 const userV1 = {
@@ -12,29 +12,25 @@ const userV1 = {
     email: z.string().email(),
     name: z.string(),
     phone: z.string(),
-    role: z.string(),
-
-    updatedAt: z.date()
+    role: z.string()
   })
 };
 
 const thisSchema = userV1;
 
 export type UserType = z.infer<typeof thisSchema.schema>;
+export type UserDBType = UserType & PopulatedFields;
 
-export const UserSchema = { 
-  type: SchemaType.USER,
+export const UserSchema = {
+  type: SchemaType.User,
   keys: {
-    [Key.PRIMARY]: {
+    [Index.PRIMARY]: {
       PK: ["user"],
       SK: [LocationSchema, thisSchema]
     },
-    [Key.LSI1]: {
-      SK: [thisSchema]
-    },
-    [Key.GSI1]: {
+    [Index.GSI1]: {
       PK: [thisSchema],
-      SK: [SchemaType.USER]
+      SK: [SchemaType.User]
     },
   },
   ...thisSchema

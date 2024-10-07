@@ -1,11 +1,14 @@
 import { z } from "zod";
-import { SchemaType, Key } from "../../types";
+import { SchemaType, Index, PopulatedFields } from "@labs/core.database/single-table/types";
 import { UserSchema } from "../user/user";
+import { WalletSchema } from "./wallet";
 import { LocationSchema } from "../location";
 
-const walletTransactionV1 = {
+export const walletTransactionV1 = {
   version: 1,
   schema: z.object({
+    usrId: z.string(),
+    locId: z.string(),
     authorizationConfirmed: z.boolean().default(false),
     settled: z.boolean().default(false),
     cancelled: z.boolean().default(false),
@@ -20,26 +23,36 @@ const walletTransactionV1 = {
     groupId: z.string(),
     operatorId: z.string(),
     zipCode: z.number(),
-    country: z.string(),
-
-    updatedAt: z.date()
+    country: z.string()
   })
 };
 
 const thisSchema = walletTransactionV1;
 
 export type WalletTransactionType = z.infer<typeof thisSchema.schema>;
+export type WalletTransactionDBType = WalletTransactionType & PopulatedFields;
 
-export const WalletTransactionSchema = { 
-  type: SchemaType.WALLET_TRANSACTION,
+export const WalletTransactionSchema = {
+  type: SchemaType.WalletTransaction,
   keys: {
-    [Key.PRIMARY]: {
-      PK: [LocationSchema],
-      SK: [thisSchema]
+    [Index.PRIMARY]: {
+      PK: [{
+        schema: LocationSchema
+      }],
+      SK: [{
+        schema: thisSchema
+      }]
     },
-    [Key.GSI1]: {
-      PK: [UserSchema],
-      SK: ["wallet", thisSchema]
+    [Index.GSI1]: {
+      PK: [{
+        schema: UserSchema
+      }],
+      SK: [{
+        schema: WalletSchema,
+        override: "wallet"
+      }, {
+        schema: thisSchema
+      }]
     }
   },
   ...thisSchema

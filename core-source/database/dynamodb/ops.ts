@@ -13,8 +13,8 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, QueryCommandInput } from "@aws-sdk/lib-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-
-import { SortKeyOperation, Table, Filters } from "../types";
+import { SortKeyOperation, Filters, QueryInput, GetInput, Table } from "../types";
+import { PopulatedFields } from "@labs/be.database/types";
 
 const db = new DynamoDBClient({
   region: "ap-southeast-2",
@@ -23,7 +23,7 @@ const db = new DynamoDBClient({
 const client = DynamoDBDocumentClient.from(db);
 
 // Function to handle reserved keywords
-const RESERVED_KEYWORDS = ["name", "status", "state"];
+const RESERVED_KEYWORDS = ["name", "status", "state", "type"];
 
 function sanitizeField(field: string) {
   if (RESERVED_KEYWORDS.includes(field)) {
@@ -41,19 +41,19 @@ function tableName(table: Table) {
 
 export async function dynamoPut<T>(
   index: Table,
-  item: T & { PK: string; SK?: string }
+  item: T & PopulatedFields
 ): Promise<void> {
   const params: PutItemCommandInput = {
     TableName: tableName(index),
-    Item: marshall(item),
+    Item: marshall(item, { convertClassInstanceToMap: true }),
   };
   await client.send(new PutItemCommand(params));
 }
 
 export async function dynamoUpdate<T>(
   index: Table,
-  key: string | { PK: string, SK?: string },
-  updates: Partial<T> & { PK: string; SK?: string }
+  key: string | GetInput,
+  updates: Partial<T> & PopulatedFields
 ): Promise<void> {
   // Allow `key` to be passed as a string for simple PK without SK
   const primaryKey = typeof key === "string" ? { PK: key } : key;
@@ -79,40 +79,28 @@ export async function dynamoUpdate<T>(
 
 export async function dynamoGet<T extends object, K extends keyof T = keyof T>(
   index: Table,
-  query: { PK: string; SK?: string; SK2?: string; OP?: SortKeyOperation } | string,
+  query: GetInput | string,
   projectedFields?: K[]
-): Promise<Pick<T, K> | null> {
+): Promise<Pick<T, K> & PopulatedFields | undefined> {
   const params = constructGetParams(index, query, projectedFields as string[]); // Cast for runtime
   const data = await client.send(new GetItemCommand(params));
 
   if (!data.Item) {
-    return null;
+    return;
   }
 
-  const unmarshalledItem = unmarshall(data.Item) as T;
-  
-  // If no projected fields, return the whole item
-  if (!projectedFields || projectedFields.length === 0) {
-    return unmarshalledItem as Pick<T, K>;
-  }
-
-  // Otherwise, return only the projected fields
-  const result: Partial<T> = {};
-  for (const field of projectedFields) {
-    if (field in unmarshalledItem) {
-      result[field] = unmarshalledItem[field];
-    }
-  }
-
-  return result as Pick<T, K>;
+  return unmarshall(data.Item) as Pick<T, K> & PopulatedFields;
 }
 
-export async function dynamoQuery<T extends object, K extends keyof T = keyof T>(
+export async function dynamoQuery<
+T extends object, 
+K extends keyof (T & PopulatedFields) = keyof (T & PopulatedFields)
+>(
   index: Table,
-  query: { PK: string; SK?: string; SK2?: string; OP?: SortKeyOperation } | string,
+  query: QueryInput | string,
   projectedFields?: K[],
   filters?: Filters
-): Promise<Pick<T, K>[]> {
+): Promise<Pick<T & PopulatedFields, K>[]> {
   const params = constructQueryParams(index, query, projectedFields as string[], filters);
   const data = await client.send(new QueryCommand(params));
 
@@ -123,19 +111,19 @@ export async function dynamoQuery<T extends object, K extends keyof T = keyof T>
 
   // If no projected fields are provided, return the entire items
   if (!projectedFields || projectedFields.length === 0) {
-    return data.Items.map(item => unmarshall(item) as T);
+    return data.Items.map(item => unmarshall(item) as T & PopulatedFields);
   }
 
   // Otherwise, return only the projected fields
   return data.Items.map(item => {
     const unmarshalledItem = unmarshall(item) as T;
-    const result: Partial<T> = {};
+    const result: Partial<T & PopulatedFields> = {};
     for (const field of projectedFields) {
       if (field in unmarshalledItem) {
         result[field] = unmarshalledItem[field];
       }
     }
-    return result as Pick<T, K>;
+    return result as Pick<T & PopulatedFields, K>;
   });
 }
 
@@ -174,7 +162,7 @@ export async function dynamoScan<T extends object, K extends keyof T = keyof T>(
 
 export async function dynamoDelete(
   index: Table,
-  key: string | { PK: string, SORT?: string }
+  key: string | GetInput
 ): Promise<void> {
   // Allow `key` to be passed as a string for simple PK without SORT key
   const primaryKey = typeof key === "string" ? { PK: key } : key;
@@ -183,7 +171,7 @@ export async function dynamoDelete(
     TableName: tableName(index),
     Key: marshall({
       [index._meta.primaryKey]: primaryKey.PK,
-      ...(primaryKey.SORT && index._meta.sortKey && { [index._meta.sortKey]: primaryKey.SORT }),
+      ...(primaryKey.SK && index._meta.sortKey && { [index._meta.sortKey]: primaryKey.SK }),
     }),
   };
 
@@ -193,7 +181,7 @@ export async function dynamoDelete(
 // Function to construct GetItemCommand params
 function constructGetParams(
   index: Table,
-  query: { PK: string, SK?: string } | string,
+  query: GetInput | string,
   projectedFields?: string[]
 ) {
   if (typeof query === "string") {
@@ -238,7 +226,7 @@ function constructUpdateExpression<T>(updates: Partial<T>): string {
 // Function to construct QueryCommand/ScanCommand params
 function constructQueryParams(
   index: Table,
-  query?: { PK: string, SK?: string, SK2?: string, OP?: SortKeyOperation } | string,
+  query?: QueryInput | string,
   projectedFields?: string[],
   filters?: Filters
 ) {
@@ -288,9 +276,9 @@ function constructQueryParams(
     if (!params.ExpressionAttributeValues) params.ExpressionAttributeValues = {};
     params.ExpressionAttributeValues[":s"] = query.SK;
 
-    if (operation === SortKeyOperation.BETWEEN && query.SK2) {
-      params.ExpressionAttributeValues[":s2"] = query.SK2;
-    } else if (operation === SortKeyOperation.BETWEEN && !query.SK2) {
+    if (operation === SortKeyOperation.BETWEEN && query.SK_END) {
+      params.ExpressionAttributeValues[":s2"] = query.SK_END;
+    } else if (operation === SortKeyOperation.BETWEEN && !query.SK_END) {
       throw new Error("BETWEEN operation requires a second sort key value (SK2)");
     }
   }

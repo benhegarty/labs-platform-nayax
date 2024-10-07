@@ -33,30 +33,34 @@ function generateRandomBase64(length: number): string {
   return result;
 }
 
-// Function to generate the ID
-export function generateId(): string {
-  const now = new Date();
-
+export function generateIdTimestamp(date: Date) {
   // Calculate year since 2020 (1 base-64 character)
-  const year = now.getUTCFullYear() - 2020;
+  const year = date.getUTCFullYear() - 2020;
   const yearEncoded = toBase64(year % 64, 1);
 
   // Calculate week of the year (1 base-64 character)
-  const firstDayOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
-  const dayOfYear = Math.floor((now.getTime() - firstDayOfYear.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  const firstDayOfYear = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const dayOfYear = Math.floor((date.getTime() - firstDayOfYear.getTime()) / (1000 * 60 * 60 * 24)) + 1;
   const week = Math.ceil(dayOfYear / 7);
   const weekEncoded = toBase64(week, 1);
 
   // Calculate 36ms interval since the start of the week (4 base-64 characters)
   const startOfWeek = new Date(firstDayOfYear.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
-  const interval = Math.floor((now.getTime() - startOfWeek.getTime()) / 36);
+  const interval = Math.floor((date.getTime() - startOfWeek.getTime()) / 36);
   const intervalEncoded = toBase64(interval, 4);
+
+  return yearEncoded + weekEncoded + intervalEncoded;
+}
+
+// Function to generate the ID
+export function generateId(): string {
+  const datePart = generateIdTimestamp(new Date());
 
   // Generate 4 random base-64 characters
   const randomPart = generateRandomBase64(idRandomPartLength);
 
   // Combine all parts (Time at the start)
-  return yearEncoded + weekEncoded + intervalEncoded + randomPart;
+  return datePart + randomPart;
 }
 
 // Function to decode the ID into a timestamp

@@ -3,6 +3,7 @@ import { backendService } from "@labs/core.backend";
 import { Nayax as Service } from "@labs/api";
 export default backendService(Service);
 
+import "./apis/start-authorization";
 import "./apis/staticqr-authorization";
 import "./apis/staticqr-cancel";
 import "./apis/staticqr-refund";

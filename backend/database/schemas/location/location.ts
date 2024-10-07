@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SchemaType, Key } from "../../types";
+import { SchemaType, Index, PopulatedFields } from "@labs/core.database/single-table/types";
 import { BrandSchema } from "../brand/brand";
 
 const locationV1 = {
@@ -13,19 +13,19 @@ const locationV1 = {
     country: z.string(),
     postalCode: z.string(),
     latitude: z.number(),
-    longitude: z.number(),
-    updatedAt: z.date()
+    longitude: z.number()
   })
 };
 
 const thisSchema = locationV1;
 
 export type LocationType = z.infer<typeof thisSchema.schema>;
+export type LocationDBType = LocationType & PopulatedFields;
 
 export const LocationSchema = { 
-  type: SchemaType.LOCATION,
+  type: SchemaType.Location,
   keys: {
-    [Key.PRIMARY]: {
+    [Index.PRIMARY]: {
       PK: ["brand"],
       SK: [BrandSchema, thisSchema]
     }

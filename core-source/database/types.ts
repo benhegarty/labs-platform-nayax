@@ -21,3 +21,15 @@ export enum SortKeyOperation {
   GREATER_THAN_OR_EQUAL = ">=",
   BETWEEN = "BETWEEN",
 }
+
+export type QueryInput = { 
+  PK: string, 
+  SK?: string, 
+  SK_END?: string,
+  OP?: SortKeyOperation
+};
+
+export type GetInput = { 
+  PK: string, 
+  SK?: string
+};
