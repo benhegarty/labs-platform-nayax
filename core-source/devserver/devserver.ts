@@ -1,3 +1,12 @@
+const LABS_LOGO = `
+ |       \\    _ )   __| 
+ |      _ \\   _ \\ \\__ \\ 
+____| _/  _\\ ___/ ____/`;
+console.log(chalk.blue.bold("\n------------------------------------------------------------\n"));
+console.log(chalk.bold.white(LABS_LOGO).split("\n").join("\n                  ") + "\n");
+console.log(chalk.gray("                       Platform v1.1\n"));
+console.log(chalk.blue.bold("------------------------------------------------------------\n"));
+
 import * as env from "@labs/be.environment";
 process.env = { ...process.env, ...env.dev };
 
@@ -30,11 +39,6 @@ if (!process.argv[2]) {
   process.exit(1);
 }
 process.env.AWS_PROFILE = process.argv[2];
-
-const LABS_LOGO = `
- |       \\    _ )   __| 
- |      _ \\   _ \\ \\__ \\ 
-____| _/  _\\ ___/ ____/`;
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -216,11 +220,6 @@ async function main() {
 
   const tunnelUrl = `https://${tunnelId}.aue.devtunnels.ms:${port}`;
 
-  console.clear();
-  console.log(chalk.blue.bold("------------------------------------------------------------\n"));
-  console.log(chalk.bold.white(LABS_LOGO).split("\n").join("\n                  ") + "\n");
-  console.log(chalk.gray("                       Platform v1.1\n"));
-  console.log(chalk.blue.bold("------------------------------------------------------------\n"));
   console.log(chalk.blue.bold(" AWS Profile: ") + process.env.AWS_PROFILE + chalk.blue.bold(`${" ".repeat(15 - process.env.AWS_PROFILE!.length)}Endpoints: `) + endpointCount);
   console.log();
   console.log(chalk.blue(" " + tunnelUrl));

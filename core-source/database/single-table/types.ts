@@ -1,29 +1,3 @@
-export enum Index {
-  PRIMARY = "PRIMARY",  // ROOT KEY
-  STATE = "STATE",        // STATE
-  GSI1 = "GSI1",        // MEMBER VIEW
-  GSI2 = "GSI2",        // MEMBER TAG
-}
-
-export const SchemaType = {
-  Brand: "bnd",
-  Location: "loc",
-  User: "usr",
-  Wallet: "wal",
-  WalletTransaction: "trw",
-  Test: "trx",
-  WalletProduct: "wpr",
-  WalletTransactionProduct: "wtp",
-} as const;
-
-export type SchemaType = typeof SchemaType[keyof typeof SchemaType];
-
-export const schemaNameLookup: { [value: string]: string } = {};
-for (const key in SchemaType) {
-  const value = SchemaType[key as keyof typeof SchemaType];
-  schemaNameLookup[value] = key;
-}
-
 export enum Status {
   // GOOD
   APPROVED = "0",
@@ -56,7 +30,7 @@ export enum Status {
 }
 
 export type PopulatedFields = {
-  type: SchemaType,
+  schemaType: string,
   id: string,
   PK: string,
   updatedAt: string,
@@ -81,4 +55,13 @@ export enum PKType {
 export type AppFields = {
   id: string,
   updatedAt: string,
+}
+
+export type Query = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  index: any, 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  path: Record<string, any>[], 
+  getChildren?: boolean,
+  projectedFields?: string[]
 }

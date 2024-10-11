@@ -14,7 +14,7 @@ import {
 import { DynamoDBDocumentClient, QueryCommandInput } from "@aws-sdk/lib-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SortKeyOperation, Filters, QueryInput, GetInput, Table } from "../types";
-import { PopulatedFields } from "@labs/be.database/types";
+import { PopulatedFields } from "../single-table/types";
 
 const db = new DynamoDBClient({
   region: "ap-southeast-2",
@@ -23,7 +23,7 @@ const db = new DynamoDBClient({
 const client = DynamoDBDocumentClient.from(db);
 
 // Function to handle reserved keywords
-const RESERVED_KEYWORDS = ["name", "status", "state", "type"];
+const RESERVED_KEYWORDS = ["name", "status", "state", "type", "from"];
 
 function sanitizeField(field: string) {
   if (RESERVED_KEYWORDS.includes(field)) {
@@ -98,10 +98,11 @@ K extends keyof (T & PopulatedFields) = keyof (T & PopulatedFields)
 >(
   index: Table,
   query: QueryInput | string,
-  projectedFields?: K[],
+  projectedFields?: K[] | string[],
   filters?: Filters
 ): Promise<Pick<T & PopulatedFields, K>[]> {
   const params = constructQueryParams(index, query, projectedFields as string[], filters);
+  console.log(params);
   const data = await client.send(new QueryCommand(params));
 
   // If no items are found, return an empty array
@@ -120,7 +121,7 @@ K extends keyof (T & PopulatedFields) = keyof (T & PopulatedFields)
     const result: Partial<T & PopulatedFields> = {};
     for (const field of projectedFields) {
       if (field in unmarshalledItem) {
-        result[field] = unmarshalledItem[field];
+        result[field] = unmarshalledItem[field as keyof T] as (T & PopulatedFields)[K];
       }
     }
     return result as Pick<T & PopulatedFields, K>;

@@ -5,7 +5,7 @@ import { getIdTimestamp } from "@labs/id";
 
 export const StartAuthorization = api({
   method: Method.POST,
-  path: "start-authorization",
+  path: "/start-authorization",
   title: "Start Authorization",
   description: "Start authorization of a static QR code.",
   cors: true,

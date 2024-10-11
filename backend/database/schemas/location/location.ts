@@ -1,34 +1,71 @@
 import { z } from "zod";
-import { SchemaType, Index, PopulatedFields } from "@labs/core.database/single-table/types";
-import { BrandSchema } from "../brand/brand";
+import { debtCollectionType, weekHours } from "../common";
 
-const locationV1 = {
-  version: 1,
-  schema: z.object({
+export const Versions = [
+  z.object({ // 0
+    // Links
+    brandId: z.string(),
+
+    // Status
+    isOpen: z.boolean().default(true),
+    isTemporarilyClosed: z.boolean().default(false),
+    isPermanentlyClosed: z.boolean().default(false),
+
+    temporaryCloseStartDateTime: z.string().optional(),
+    temporaryCloseEndDateTime: z.string().optional(),
+    temporaryCloseReason: z.string().optional(),
+    
+    // Details
     name: z.string(),
-    isOpen: z.boolean(),
-    isPresale: z.boolean(),
-    address: z.string(),
-    city: z.string(),
-    country: z.string(),
-    postalCode: z.string(),
-    latitude: z.number(),
-    longitude: z.number()
+    shortName: z.string(),
+    emailPublic: z.string().email().optional(),
+    emailBusiness: z.string().email(),
+    emailFrom: z.string().email(),
+    timezone: z.string().optional(),
+    abn: z.string().optional(),
+
+    hasGroupFitness: z.boolean().default(false),
+    is24Hours: z.boolean().default(false),
+
+    // Phone Numbers
+    phoneNumberOrigin: z.string().optional(),
+    phoneNumberPublic: z.string().optional(),
+
+    // Address
+    address1: z.string().optional(),
+    address2: z.string().optional(),
+    suburb: z.string().optional(),
+    state: z.string().optional(),
+    postcode: z.number().optional(),
+    country: z.string().optional(),
+
+    // LatLong
+    geoLat: z.number().optional(),
+    geoLng: z.number().optional(),
+
+    // Financial
+    bankName: z.string().optional(),
+    bankAccountNumber: z.string().optional(),
+    bankBSB: z.string().optional(),
+    settlementDescriptor: z.string().optional(),
+    debtCollectionType: debtCollectionType.default("DISABLED"),
+
+    hours: z.object({
+      open: weekHours.optional(),
+      peak: weekHours.optional(),
+      staffed: weekHours.optional(),
+      creche: weekHours.optional(),
+    }).optional(),
+
+    thirdParty: z.object({
+      name: z.string().optional(),
+      url: z.string().optional(),
+    }).optional()
   })
-};
+];
 
-const thisSchema = locationV1;
-
-export type LocationType = z.infer<typeof thisSchema.schema>;
-export type LocationDBType = LocationType & PopulatedFields;
-
-export const LocationSchema = { 
-  type: SchemaType.Location,
-  keys: {
-    [Index.PRIMARY]: {
-      PK: ["brand"],
-      SK: [BrandSchema, thisSchema]
-    }
-  },
-  ...thisSchema,
-};
+export const Version = Versions.length - 1;
+export const Prefix = "loc";
+export const Schema = Versions[Version];
+export type Type = z.input<typeof Schema>;
+export type OutType = z.output<typeof Schema>;

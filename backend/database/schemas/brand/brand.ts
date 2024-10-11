@@ -1,31 +1,16 @@
 import { z } from "zod";
-import { SchemaType, Index, Status, PopulatedFields } from "@labs/core.database/single-table/types";
 
-const brandV1 = {
-  version: 1,
-  schema: z.object({
+export const Versions = [
+  z.object({ // 0
     name: z.string(),
-    isActive: z.boolean()
+    shortName: z.string(),
+    signupUrl: z.string().optional(),
+    theme: z.record(z.any()).optional(),
   })
-};
+];
 
-const thisSchema = brandV1;
-
-export type BrandType = z.infer<typeof thisSchema.schema>;
-export type BrandDBType = BrandType & PopulatedFields;
-
-function statusFunc(item: BrandType) {
-  return item.isActive ? Status.ACTIVE : Status.INACTIVE;
-}
-
-export const BrandSchema = { 
-  type: SchemaType.Brand,
-  keys: {
-    [Index.PRIMARY]: {
-      PK: ["brand"],
-      SK: [thisSchema]
-    }
-  },
-  statusFunc,
-  ...thisSchema,
-};
+export const Version = Versions.length - 1;
+export const Prefix = "bnd";
+export const Schema = Versions[Version];
+export type Type = z.input<typeof Schema>;
+export type OutType = z.output<typeof Schema>;

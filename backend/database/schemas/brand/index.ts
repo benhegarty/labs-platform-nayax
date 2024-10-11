@@ -1,1 +1,1 @@
-export * from "./brand";
+export * as Brand from "./brand";

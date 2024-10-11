@@ -1,0 +1,1 @@
+export * as PaymentMethod from "./payment-method";

@@ -1,1 +1,1 @@
-export * from "./location";
+export * as Location from "./location";

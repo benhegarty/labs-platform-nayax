@@ -1,92 +1,25 @@
-// import { z, ZodSchema } from "zod";
-
-// import { Index, SchemaType } from "@labs/core.database/single-table/types";
-// import {
-//   WalletSchema,
-//   WalletTransactionSchema
-// } from "./wallet";
-// import {
-//   UserSchema
-// } from "./user/user";
-
-// // Helper function to create an entity with nested entities as functions
-// const createEntity = <T>(
-//   schema: T,
-//   nestedEntities?: (id?: string) => Record<string, (id?: string) => any>
-// ) => {
-//   return (id?: string) => {
-//     const entity = { id, schema };
-
-//     // If there are nested entities, attach them as functions
-//     if (nestedEntities) {
-//       const nested = nestedEntities(id);
-//       // Convert each nested entity into a callable function
-//       Object.keys(nested).forEach(key => {
-//         entity[key] = nested[key];
-//       });
-//     }
-
-//     return entity;
-//   };
-// };
-
-// // Define schemas with chainable nested entities
-// export const Indexes = {
-//   // Location
-//   PRIMARY: {
-//     Wallet: createEntity(WalletSchema, () => ({
-//       User: createEntity(UserSchema),
-//     })),
-//   },
-
-//   // Member
-//   GSI1: {
-//     User: createEntity(UserSchema, () => ({
-//       Wallet: createEntity(WalletSchema, () => ({
-//         WalletTransaction: createEntity(WalletTransactionSchema),
-//       })),
-//     })),
-//   }
-// };
-
-
-// export const Indexes = {
-
-//   // Location
-//   PRIMARY: {
-//     Wallet: () => {
-//       return {
-//         PK: "wallet",
-//         schema: WalletSchema,
-//         User: (id?) => {
-//           return {
-//             id,
-//             schema: UserSchema,
-//           };
-//         }
-//       };
-//     }
-//   },
-
-//   // Member
-//   GSI1: {
-//     User: (id?) => {
-//       return {
-//         id,
-//         schema: UserSchema,
-//         Wallet: (id?) => {
-//           return {
-//             id,
-//             schema: WalletSchema,
-//             WalletTransaction: (id?) => {
-//               return {
-//                 id,
-//                 schema: WalletTransactionSchema
-//               };
-//             }
-//           };
-//         }
-//       };
-//     }
-//   }
-// };
+// Schemas
+export * as AccessCode from "./access-code";
+export * as AccessGroup from "./access-group";
+export * as AccessPoint from "./access-point";
+export * as Audit from "./audit";
+export * as Brand from "./brand";
+export * as Calendar from "./calendar";
+export * as CalendarEvent from "./calendar-event";
+export * as Contract from "./contract";
+export * as DebtCollection from "./debt-collection";
+export * as DirectDebit from "./direct-debit";
+export * as Document from "./document";
+export * as IotDevice from "./iot-device";
+export * as Location from "./location";
+export * as Membership from "./membership";
+export * as Note from "./note";
+export * as PaymentMethod from "./payment-method";
+export * as Promotion from "./promotion";
+export * as Question from "./question";
+export * as Sms from "./sms";
+export * as SmsTemplate from "./sms-template";
+export * as Suspension from "./suspension";
+export * as Transaction from "./transaction";
+export * as User from "./user";
+export * as Visit from "./visit";
