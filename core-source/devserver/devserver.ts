@@ -13,10 +13,9 @@ process.env = { ...process.env, ...env.dev };
 import * as backend from "@labs/be.services";
 
 // It's like a staircase!
-import { HandlerEvent, Role } from "@labs/core.backend/types";
+import { AuthUser, HandlerEvent, Role } from "@labs/core.backend/types";
 import { APIDefinition, AuthType } from "@labs/core.api/types";
 import { tunnelAuthBypass } from "./middleware/tunnel-auth-bypass";
-import { User } from "@labs/types";
 import { cognitoAuth } from "./middleware/cognito";
 import { apiKeyAuth } from "./middleware/api-key";
 import { validate } from "./middleware/validator";
@@ -89,7 +88,7 @@ async function createEndpoint<T extends APIDefinition>(
         params: req.params,
         query: req.query,
         body: req.body,
-        user: (req as Request & { user: User }).user,
+        user: (req as Request & { user: AuthUser }).user,
       };
 
       let log;

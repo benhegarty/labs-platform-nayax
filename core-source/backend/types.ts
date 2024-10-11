@@ -1,4 +1,3 @@
-import { User } from "@labs/schemas";
 import { APIDefinition, ServiceDefinition } from "@labs/core.api/types";
 import { ZodTypeAny, infer as ZodInfer } from "zod";
 
@@ -20,11 +19,18 @@ export enum Role {
   L5 = "L5",
 }
 
+export type AuthUser = {
+  id: string,
+  email: string,
+  firstName: string,
+  lastName: string
+}
+
 export type HandlerEvent<Params, Query, Body> = {
   params: Params;
   query: Query;
   body: Body;
-  user?: User.OutType;
+  user?: AuthUser;
 };
 
 export type BackEndService<APIs extends Record<string, APIDefinition>> = {
@@ -46,7 +52,7 @@ export type BackEndAPI<API extends APIDefinition> = {
     >,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     raw?: any,
-  ) => Promise<Infer<API["responseSchema"]> | {statusCode?: number, body: Infer<API["responseSchema"]>, headers?: Record<string, string>}>;
+  ) => Promise<Infer<API["responseSchema"]> | { statusCode?: number, body: Infer<API["responseSchema"]>, headers?: Record<string, string> }>;
 };
 
 export type BackendAPIs<APIs extends Record<string, APIDefinition>> = {

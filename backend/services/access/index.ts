@@ -1,8 +1,8 @@
 import { backendService } from "@labs/core.backend";
 
-import { Documentation as Service } from "@labs/api";
+import { Access as Service } from "@labs/api";
 export default backendService(Service);
 
-import "./apis/documentation";
+import "./websockets/check-access-code";
 
 // Don't forget to add to ../index.ts
