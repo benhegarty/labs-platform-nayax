@@ -6,4 +6,5 @@ export const env: EnvironmentVariables = {
   DYNAMODB_LEGACY_TABLE_SUFFIX: "-k5r5hyaijzgszl2xs5ysna5urq-prod",
   COGNITO_AUTH_URL: "https://cognito-idp.ap-southeast-2.amazonaws.com/ap-southeast-2_PQjXE3bPg",
   COGNITO_CLIENT_ID: "q13bjf9l998jcgl1bmqpuhps2",
+  API_KEY_NAYAX: "$*&$^%)*&^dsljfjKHLJHGdjs"
 };

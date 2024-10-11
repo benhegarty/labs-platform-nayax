@@ -1,0 +1,3 @@
+[submodule "core-source"]
+	path = core-source
+	url = git@github.com:benhegarty/labs-platform-core.git

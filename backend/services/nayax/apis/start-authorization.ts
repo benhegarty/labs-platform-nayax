@@ -6,7 +6,9 @@ import { User, Contract, Suspension } from "@labs/schemas";
 import { putSuspension, getSuspensionsForUserContract } from "@labs/be.database/suspension";
 
 // Define and configure the backend function
-export const be = backendFor(API.StartAuthorization);
+export const be = backendFor(API.StartAuthorization, {
+  apiKey: process.env.API_KEY_NAYAX
+});
 
 be.roles = [Role.L1];
 be.apiKey = "nayax";
