@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>LABS API Docs</title>
+  <script src="/public-dev/web-components.min.js"></script>
+  <link rel="stylesheet" href="/public-dev/styles.min.css">
+  <link rel="icon" type="image/png" href="/public-dev/favicon.png">
+  <link rel="stylesheet" href="/public-dev/custom.css">
+  <script>
+    window.tunnelUrl = '{{tunnelUrl}}';
+  </script>
+  <script src="/public-dev/tunnel.js"></script>
+</head>
+
+<body>
+  <elements-api apiDescriptionUrl="{{tunnelUrl}}/docs/openapi" router="hash" layout="responsive" hideExport="true"
+    logo="./public-dev/logo.svg" />
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+diff --git a/node_modules/@middy/input-output-logger/package.json b/node_modules/@middy/input-output-logger/package.json
+index e7aa14d..644b389 100644
+--- a/node_modules/@middy/input-output-logger/package.json
++++ b/node_modules/@middy/input-output-logger/package.json
+@@ -11,14 +11,6 @@
+     "access": "public"
+   },
+   "module": "./index.js",
+-  "exports": {
+-    ".": {
+-      "import": {
+-        "types": "./index.d.ts",
+-        "default": "./index.js"
+-      }
+-    }
+-  },
+   "types": "index.d.ts",
+   "files": [
+     "index.js",
