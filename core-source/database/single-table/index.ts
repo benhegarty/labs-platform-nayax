@@ -5,7 +5,8 @@ import { LabsPlatform } from "@labs/core.database/dynamodb/tables";
 import { Table } from "@labs/core.database/types";
 import { dynamoGet, dynamoQuery } from "../dynamodb/ops";
 import { z } from "zod";
-import { Indexes } from "@labs/be.database/schemas";
+import { Indexes } from "@labs/be.database";
+import * as Schemas from "@labs/schemas";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function index(index: string, children?: Record<string, any>) {
@@ -44,11 +45,16 @@ export function child(schema: any, children?: Record<string, any>) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function indexes<T>(Indexes: T & { _meta?: any }): T & { _meta: any } {
+export function indexes<T>(Indexes: T & { PRIMARY: any, _meta?: any }): T & { PRIMARY: any, _meta: any } {
   Indexes._meta = {
     lookup: {},
     names: {}
   };
+  const primary = {};
+  for (const s in Schemas) {
+    primary[s] = itemKey(Schemas[s]);
+  }
+  Indexes.PRIMARY = index("PRIMARY", primary);
   for (const index in Indexes) {
     if (index === "_meta") continue;
     Indexes._meta.lookup[index] = {};
@@ -56,7 +62,7 @@ export function indexes<T>(Indexes: T & { _meta?: any }): T & { _meta: any } {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return Indexes as T & { _meta: any };
+  return Indexes as T & { _meta: any, PRIMARY: any };
 }
 
 function traverse(node, path, index, _meta) {
@@ -86,7 +92,7 @@ function traverse(node, path, index, _meta) {
 
 export function populateKeys<T>(schema, item: T): { index: Table | undefined, item: (T & PopulatedFields) | undefined } {
   const att: PopulatedFields = {
-    schematype: schema.Prefix,
+    schemaType: schema.Prefix,
     id: generateId(),
     PK: "",
     updatedAt: new Date().toISOString(),
@@ -97,7 +103,7 @@ export function populateKeys<T>(schema, item: T): { index: Table | undefined, it
     const index = Indexes[i];
     let pkKey = "PK";
     let skKey = "SK";
-    if (i !== Index.PRIMARY) {
+    if (i !== "PRIMARY") {
       pkKey = i + "PK";
       skKey = i + "SK";
     }
@@ -239,9 +245,9 @@ export function nestItems(items, pkKey = "PK", skKey = "SK") {
     }
     const dotIndex = key.indexOf(".");
     if (dotIndex === -1) return null;
-    const type = key.substring(0, dotIndex);
+    const schemaType = key.substring(0, dotIndex);
     const id = key.substring(dotIndex + 1);
-    return { type, id };
+    return { schemaType, id };
   }
 
   // First, build a mapping from composite IDs to items

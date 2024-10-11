@@ -39,11 +39,18 @@ export async function generateDocs(headers: { [key: string]: string }) {
     if (!services[s].API) {
       continue;
     }
-    for (const ep in services[s].API) {
-      if (!services[s].API[ep]) {
+    let endpoints = services[s].API;
+    if (services[s].Websocket) {
+      endpoints = {
+        ...endpoints,
+        ...services[s].Websocket,
+      };
+    }
+    for (const ep in endpoints) {
+      if (!endpoints[ep]) {
         continue;
       }
-      const api: APIDefinition = services[s].API[ep];
+      const api: APIDefinition = endpoints[ep];
       let path = api.path;
       if (services[s].Service.basePath) {
         path = services[s].Service.basePath + path;
@@ -52,13 +59,13 @@ export async function generateDocs(headers: { [key: string]: string }) {
       const openApiRoute: RouteConfig = {
         method: api.method,
         path: path,
-        summary: api.title,
+        summary: api.isWebsocket ? `WS: ${api.title}` : api.title,
         description: api.description,
         tags: [s, ...api.tags],
         responses: {},
       };
       openApiRoute.request = {};
-      if (api.authType === AuthType.COGNITO) {
+      if (api.authType === AuthType.VIVA) {
         openApiRoute.request.headers = z.object({
           ["Authorization"]: z.string().optional().openapi({ example: "eyJraWQiOiJmVFh6MmFEbk1MQ3VvVkNIMlduUllnazN...", description: "Cognito JWT - Required unless testing" }),
         });

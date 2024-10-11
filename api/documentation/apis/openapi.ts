@@ -6,7 +6,7 @@ export const OpenAPI = api({
   path: "/openapi",
   title: "Documentation",
   description: "Get the API documentation in OpenAPI format",
-  authType: AuthType.COGNITO,
+  authType: AuthType.VIVA,
   responseSchema: openAPIObjectSchema
 });
 

@@ -1,1 +1,0 @@
-export * as CalendarEvent from "./calendar-event";

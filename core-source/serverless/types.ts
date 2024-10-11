@@ -19,20 +19,27 @@ export type Statement = {
   Resource: string | string[];
 };
 
+export type HttpEvent = {
+  httpApi: {
+    method: string;
+    path: string;
+    cors?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    authorizer?: any;
+  };
+};
+
+export type WebsocketEvent = {
+  websocket: {
+    route: string;
+    routeResponseSelectionExpression?: "$default";
+  };
+};
+
 export type ServerlessFunctionConfig = {
   handler: string;
   timeout?: number;
-  events?: [
-    {
-      httpApi: {
-        method: string;
-        path: string;
-        cors?: boolean;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        authorizer?: any;
-      };
-    }
-  ];
+  events?: (HttpEvent | WebsocketEvent)[];
   iamRoleStatementsName?: string;
   iamRoleStatements?: Partial<Statement>[];
 };

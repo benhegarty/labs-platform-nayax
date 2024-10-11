@@ -1,5 +1,5 @@
 import { z as zod, ZodTypeAny } from "zod";
-import type { APIDefinition } from "./types";
+import { APIDefinition, EndpointType } from "./types";
 import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 
 export const z = zod;
@@ -38,9 +38,32 @@ export function api<
     responseSchema?: ResponseSchema | ZodTypeAny;
   },
 ) {
+  api.endpointType = EndpointType.HTTPS;
   if (!api.paramsSchema) {
     api.paramsSchema = createZodSchemaFromPath(api.path);
   }
+  return api as APIDefinition & {
+    paramsSchema: ParamsSchema;
+    querySchema: QuerySchema;
+    bodySchema: BodySchema;
+    responseSchema: ResponseSchema;
+  };
+}
+
+export function websocket<
+  ParamsSchema extends ZodTypeAny,
+  QuerySchema extends ZodTypeAny,
+  BodySchema extends ZodTypeAny,
+  ResponseSchema extends ZodTypeAny,
+>(
+  api: APIDefinition & {
+    paramsSchema?: ParamsSchema | ZodTypeAny;
+    querySchema?: QuerySchema | ZodTypeAny;
+    bodySchema?: BodySchema | ZodTypeAny;
+    responseSchema?: ResponseSchema | ZodTypeAny;
+  },
+) {
+  api.endpointType = EndpointType.WEBSOCKET;
   return api as APIDefinition & {
     paramsSchema: ParamsSchema;
     querySchema: QuerySchema;

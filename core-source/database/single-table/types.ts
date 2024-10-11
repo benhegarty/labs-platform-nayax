@@ -29,6 +29,15 @@ export enum Status {
   EMPTY = "H",
 }
 
+export enum Index {
+  PRIMARY = "PRIMARY",
+  GSI1 = "GSI1",
+  GSI2 = "GSI2",
+  GSI3 = "GSI3",
+  GSI4 = "GSI4",
+  GSI5 = "GSI5",
+}
+
 export type PopulatedFields = {
   schemaType: string,
   id: string,
@@ -59,9 +68,9 @@ export type AppFields = {
 
 export type Query = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  index: any, 
+  index: any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  path: Record<string, any>[], 
+  path: Record<string, any>[],
   getChildren?: boolean,
   projectedFields?: string[]
 }

@@ -1,1 +1,0 @@
-export * as IotDevice from "./iot-device";

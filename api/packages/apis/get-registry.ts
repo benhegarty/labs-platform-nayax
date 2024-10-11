@@ -9,7 +9,7 @@ export const GetRegistry = api({
   title: "Get Registry",
   description: "Get the information about the registry",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.VIVA,
   responseSchema: registryInfoSchema
 });
 

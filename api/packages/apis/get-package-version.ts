@@ -9,7 +9,7 @@ export const GetPackageVersion = api({
   title: "Package Version",
   description: "Get the information about the package version",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.VIVA,
   responseSchema: packageVersionSchema
 });
 

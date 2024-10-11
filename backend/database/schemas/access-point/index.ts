@@ -1,1 +1,0 @@
-export * as AccessPoint from "./access-point";

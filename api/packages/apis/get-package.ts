@@ -9,7 +9,7 @@ export const GetPackage = api({
   title: "Get Package",
   description: "Get the information about the package",
   cors: true,
-  authType: AuthType.COGNITO,
+  authType: AuthType.VIVA,
   responseSchema: packageInfoSchema
 });
 

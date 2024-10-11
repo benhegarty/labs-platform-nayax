@@ -1,4 +1,4 @@
-import { APIDefinition, AuthType, ServiceDefinition } from "@labs/core.api/types";
+import { APIDefinition, ServiceDefinition } from "@labs/core.api/types";
 import type { BackEndAPI, BackEndService } from "./types";
 export { default as httpError } from "http-errors";
 export * from "./types";

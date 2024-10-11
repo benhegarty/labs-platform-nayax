@@ -1,1 +1,0 @@
-export * as Promotion from "./promotion";

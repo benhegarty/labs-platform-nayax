@@ -1,4 +1,4 @@
-import { User } from "@labs/api/members/types/user";
+import { User } from "@labs/schemas";
 import { APIDefinition, ServiceDefinition } from "@labs/core.api/types";
 import { ZodTypeAny, infer as ZodInfer } from "zod";
 
@@ -24,7 +24,7 @@ export type HandlerEvent<Params, Query, Body> = {
   params: Params;
   query: Query;
   body: Body;
-  user?: User;
+  user?: User.OutType;
 };
 
 export type BackEndService<APIs extends Record<string, APIDefinition>> = {
@@ -37,6 +37,7 @@ export type BackEndAPI<API extends APIDefinition> = {
   tables?: Table[];
   roles?: Role[];
   apiKey?: string;
+  enableWebsocketReponse?: boolean;
   handler?: (
     event: HandlerEvent<
       Infer<API["paramsSchema"]>,

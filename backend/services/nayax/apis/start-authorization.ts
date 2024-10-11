@@ -2,10 +2,8 @@ import { Role, backendFor } from "@labs/core.backend";
 
 // Fetch the service APIs
 import { API } from "@labs/api/nayax";
-import { getSuspensionsForUserContract, putSuspension, Suspension } from "@labs/be.database/schemas/suspension";
-import { User } from "@labs/be.database/schemas/user";
-import { Contract } from "@labs/be.database/schemas/contract";
-import { Location } from "@labs/be.database/schemas/location";
+import { User, Contract, Suspension } from "@labs/schemas";
+import { putSuspension, getSuspensionsForUserContract } from "@labs/be.database/suspension";
 
 // Define and configure the backend function
 export const be = backendFor(API.StartAuthorization);
@@ -19,11 +17,13 @@ be.handler = async (_) => {
   dateTo.setDate(dateTo.getDate() + 1);
 
   const suspension: Suspension.Type = {
-    [User.Prefix]: "4fAavZ3T71Vf",
-    [Contract.Prefix]: "4fAazEudl+Lb",
-    [Location.Prefix]: "4fEykx$Lc8Eq",
-    from: new Date(),
-    to: dateTo,
+    userId: "4fAavZ3T71Vf",
+    contractId: "4fAazEudl+Lb",
+    locationId: "4fEykx$Lc8Eq",
+    fromDateTime: new Date(),
+    toDateTime: dateTo,
+    suspendedByUserId: "4fAavZ3T71Vf",
+    periodDays: 1
   };
   
   const suspensionItem = await putSuspension(suspension);

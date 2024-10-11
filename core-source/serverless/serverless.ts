@@ -1,6 +1,7 @@
 import {
   APIDefinition,
   AuthType,
+  EndpointType,
   ServiceDefinition
 } from "@labs/core.api/types";
 
@@ -15,7 +16,9 @@ import type {
   Event,
   Response,
   APIGatewayProxyResultJSON,
-  ServerlessFunctionConfig
+  ServerlessFunctionConfig,
+  HttpEvent,
+  WebsocketEvent
 } from "./types";
 
 import type {
@@ -142,6 +145,7 @@ export function slsFunctionFile(functionName: string, serviceKey: string) {
 export function slsDefinition(serviceName, version, stage, awsProfile, cognitoIssuerUrl, cognitoClientId, Service: {
   Service: ServiceDefinition;
   API: { [key: string]: APIDefinition };
+  Websocket: { [key: string]: APIDefinition };
 }): AWS & {
   build: {
     esbuild: {
@@ -154,6 +158,11 @@ export function slsDefinition(serviceName, version, stage, awsProfile, cognitoIs
     };
   };
 } {
+  let endpoints = Service.API;
+  endpoints = {
+    ...endpoints,
+    ...Service.Websocket,
+  };
   return {
     org: "vivaleisure",
     app: "labs-platform",
@@ -201,7 +210,7 @@ export function slsDefinition(serviceName, version, stage, awsProfile, cognitoIs
         ...environment,
       },
     },
-    functions: slsFunctions(serviceName, Service.API),
+    functions: slsFunctions(serviceName, endpoints),
   };
 }
 
@@ -217,20 +226,33 @@ export function slsFunctions(serviceName: string, apis: { [key: string]: APIDefi
     ret[api.key] = {
       handler: `functions/${api.key}.${api.key}Handler`,
       timeout: 29,
-      events: [
-        {
-          httpApi: {
-            method: api.method.toLowerCase(),
-            path: api.path,
-          },
-        },
-      ],
+      events: [],
     };
-    if (api.authType == AuthType.COGNITO) {
-      ret[api.key]!.events![0].httpApi.authorizer = {
-        name: "cognitoAuthorizer"
+    if (api._meta.backend.endpointType == EndpointType.HTTPS) {
+      const event: HttpEvent = {
+        httpApi: {
+          method: api.method.toLowerCase(),
+          path: api.path,
+        },
       };
+      if (api.authType == AuthType.COGNITO) {
+        event.httpApi.authorizer = {
+          name: "cognitoAuthorizer"
+        };
+      }
+      ret[api.key].events!.push(event);
+    } else if (api._meta.backend.endpointType == EndpointType.WEBSOCKET) {
+      const event: WebsocketEvent = {
+        websocket: {
+          route: api.path.substring(1).toLowerCase()
+        }
+      };
+      if (api._meta.backend.enableWebsocketReponse) {
+        event.websocket.routeResponseSelectionExpression = "$default";
+      }
+      ret[api.key].events!.push(event);
     }
+
     if (api._meta.backend.tables && api._meta.backend.tables.length > 0) {
       const SUFFIX = environment.DYNAMODB_LEGACY_TABLE_SUFFIX;
       for (const table of api._meta.backend.tables) {
