@@ -1,0 +1,1 @@
+export * as SmsTemplate from "./sms-template";
