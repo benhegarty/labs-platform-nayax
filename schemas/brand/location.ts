@@ -82,7 +82,7 @@ export const Versions = [
 ];
 
 export const Version = Versions.length - 1;
-export const Prefix = "loc";
+export const Prefix = "lcn";
 export const Schema = Versions[Version];
 export type Type = z.input<typeof Schema>;
 export type OutType = z.output<typeof Schema>;

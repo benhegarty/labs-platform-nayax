@@ -7,7 +7,7 @@ export const Versions = [
     locationId: z.string(),
     userId: z.string().optional(),
     receiptDocumentId: z.string().optional(),
-    payMethod: z.string().optional(),
+    payMethodId: z.string().optional(),
     directDebitId: z.string().optional(),
     contractId: z.string().optional(),
 

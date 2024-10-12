@@ -3,21 +3,15 @@ import { z } from "zod";
 export const Versions = [
   z.object({ // 0
     // Links
-    userId: z.string(),
-    addedByUserId: z.string(),
+    brandId: z.string(),
 
     // Details
-    note: z.string(),
-    addedByName: z.string().default("SYSTEM"),
-
-    // Migration
-    migrationId: z.string().optional(),
-    migrationPlatform: z.string().optional(),
+    body: z.string(),
   })
 ];
 
 export const Version = Versions.length - 1;
-export const Prefix = "uin"; // user interaction note
+export const Prefix = "lcg";
 export const Schema = Versions[Version];
 export type Type = z.input<typeof Schema>;
 export type OutType = z.output<typeof Schema>;

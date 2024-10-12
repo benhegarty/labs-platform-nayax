@@ -5,7 +5,7 @@
   "workspaces": [
     "schemas",
     "api",
-    "backend/*",
+    "backend/**/*",
     "libs/*",
     "core-source/*"
   ],

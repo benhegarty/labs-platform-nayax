@@ -23,7 +23,7 @@ export const Versions = [
     inviteCode: z.string().default(generateId),
 
     // Details
-    type: z.enum(["MEMBER", "STAFF", "PT"]).default("MEMBER"),
+    type: z.enum(["MEMBER", "STAFF", "PT", "CONTRACTOR"]).default("MEMBER"),
     joinDateTime: z.date().transform((date) => date.toISOString()),
     pendingApprovalDateTime: z.date().transform((date) => date.toISOString()),
 
@@ -45,7 +45,7 @@ export const Versions = [
 
     // Financial
     failedDebitCount: z.number().default(0),
-    balance: z.number().default(0),
+    balance: z.number().default(0), // Negitive = credit
 
     // Contacts
     emergencyContacts: z.array(z.object({
@@ -71,7 +71,7 @@ export const Versions = [
       "LEAD_MEMBERSHIP", 
       "PENDING_APPROVAL", 
       "COMPLETE", 
-      "AT_RISK", 
+      "AT_RISK",
       "CANCELLED", 
       "EXPIRED"
     ]).default("LEAD"),

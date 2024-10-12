@@ -23,8 +23,8 @@ export const Versions = [
     isPublicApp: z.boolean().default(false),
 
     relays: z.array(z.object({
-      id: z.string(),
       name: z.string(),
+      relayNumber: z.string().optional(),
       triggerUrl: z.string().optional(),
       triggerTimeMs: z.boolean().optional(),
     })).optional(),
