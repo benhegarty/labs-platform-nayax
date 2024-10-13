@@ -10,6 +10,7 @@ export const Versions = [
     contractId: z.string(),
 
     // Status
+    aliasUserId: z.string(),
     isApproved: z.boolean().default(false),
     isSent: z.boolean().default(false),
     isRecovered: z.boolean().default(false),

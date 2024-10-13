@@ -4,12 +4,22 @@ import { days } from "../lib/date";
 export const Versions = [
   z.object({ // 0
     // Links
-    brandId: z.string(),
-    locationId: z.string(),
     calendarId: z.string(),
-    templateId: z.string().optional(),
+    brandId: z.string().optional(),
+    locationId: z.string().optional(),
+
+    // Details
+    className: z.string(),
+    classDescription: z.string(),
+    classDuration: z.number(),
+    preBookDays: z.number(),
+    hasVirtualClass: z.boolean(),
+    capacity: z.number().optional(),
+    capacityUsed: z.number().optional(),
+    capacityWaitlist: z.number().optional(),
     
     // Relative
+    isLive: z.boolean().default(false),
     startTime: z.string().optional(),
     endTime: z.string().optional(),
     weekCycle: z.number().optional(),

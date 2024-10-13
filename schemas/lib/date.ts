@@ -22,4 +22,9 @@ export const weekHours = z.object({
   sun: z.array(dayHours),
 });
 
-export const specificHour = z.date().transform((date) => date.toISOString().substring(0, 13)).optional();
+export const cronDate = z.date().transform((date) => date.toISOString());
+
+export const duration = z.object({
+  value: z.number(),
+  unit: z.enum(["DAY", "WEEK", "FORTNIGHT", "MONTH", "YEAR"])
+});

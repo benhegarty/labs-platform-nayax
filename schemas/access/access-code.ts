@@ -6,8 +6,8 @@ export const Versions = [
     userId: z.string(),
 
     // Details
-    type: z.enum(["CARD", "APP", "PASS"]),
-    cardNumber: z.string(),
+    type: z.enum(["fob", "app", "pas"]),
+    code: z.string(),
     isLost: z.boolean().optional(),
     lostReason: z.string().optional(),
   })

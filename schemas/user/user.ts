@@ -4,6 +4,9 @@ wrapOpenApi(z);
 
 import { generateId } from "@labs/id";
 import { internationalPhone } from "../lib/phone";
+import { gender } from "../lib/gender";
+import { Schema as Location } from "../brand/location";
+import { cronDate } from "../lib/date";
 
 export const Versions = [
   z.object({ // 0
@@ -12,7 +15,14 @@ export const Versions = [
     joinLocationId: z.string(),
     primaryPaymentMethodId: z.string(),
 
+    // Cron
+    cronNext: cronDate.optional(),
+    cronFields: z.array(z.string()).default([
+      "dob"
+    ]),
+
     // Status
+    shortId: z.string().optional(),
     isInvited: z.boolean().default(false),
     isActive: z.boolean().default(false),
     isSuspended: z.boolean().default(false),
@@ -23,9 +33,16 @@ export const Versions = [
     inviteCode: z.string().default(generateId),
 
     // Details
-    type: z.enum(["MEMBER", "STAFF", "PT", "CONTRACTOR"]).default("MEMBER"),
+    type: z.enum([
+      "MEMBER", 
+      "STAFF", 
+      "PT", 
+      "CONTRACTOR",
+      "INSTRUCTOR",
+    ]).default("MEMBER"),
     joinDateTime: z.date().transform((date) => date.toISOString()),
     pendingApprovalDateTime: z.date().transform((date) => date.toISOString()),
+    lastVisitDateTime: z.date().transform((date) => date.toISOString()).optional(),
 
     // Personal
     firstName: z.string(),
@@ -35,6 +52,7 @@ export const Versions = [
     phone: internationalPhone,
     phone2: internationalPhone.optional(),
     dob: z.string(),
+    gender: gender,
 
     address1: z.string().optional(),
     address2: z.string().optional(),
@@ -45,7 +63,7 @@ export const Versions = [
 
     // Financial
     failedDebitCount: z.number().default(0),
-    balance: z.number().default(0), // Negitive = credit
+    accountCredit: z.number().default(0), // Negitive = credit
 
     // Contacts
     emergencyContacts: z.array(z.object({
@@ -63,7 +81,13 @@ export const Versions = [
     }),
 
     // Location
-    locationName: z.string(),
+    homeLocationName: Location.shape.name,
+    joinLocationName: Location.shape.name,
+
+    // Auth
+    authenticatorSecret: z.string().optional(),
+    authenticatorValidated: z.boolean().default(false),
+    authRoles: z.array(z.string()).default([]),
 
     // CRM
     onBoardStatus: z.enum([

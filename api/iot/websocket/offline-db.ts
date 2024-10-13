@@ -15,7 +15,7 @@ export const OfflineDb = websocket({
   responseSchema: z.object({
     t: z.literal("offline-db"),
     filter: z.string().length(1),
-    dbUrl: z.string().max(256),
+    getUrl: z.string().max(256),
     seq: z.number().int(),
   })
 });

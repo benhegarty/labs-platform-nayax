@@ -12,21 +12,50 @@ export const Versions = [
     contractId: z.string().optional(),
 
     // Details
-    type: z.enum(["INITIAL", "DD", "INCIDENTAL", "OVERDUE_REPAYMENT", "REFUND", "CREDIT"]),
+    aliasUserId: z.string(),
+    type: z.enum([
+      "FEE",
+      "DD",
+      "INCIDENTAL",
+      "OVERDUE_REPAYMENT", 
+      "REFUND", 
+      "REFUND_PARTIAL", 
+      "CREDIT"
+    ]),
+    receipientType: z.enum([
+      "USER", 
+      "BRAND", 
+      "LOCATION", 
+      "CONTRACT"
+    ]),
+    feeType: z.enum([
+      "DD_SETUP", 
+      "DD_ADMIN",
+      "USER_SETUP",
+    ]),
+    // Payment Method
+    paymentMethod: z.enum([
+      "ACCOUNT_CREDIT", 
+      "CARD", 
+      "BANK_ACCOUNT", 
+      "CASH", 
+      "WALLET",
+      "OTHER"
+    ]),
     identifer: z.string(),
     amount: z.number(), // positive = payment, negitive = refund
     currency: z.string(),
 
     // Status
     isPaid: z.boolean().default(false),
+    isFullyRefunded: z.boolean().default(false),
+    isPartiallyRefunded: z.boolean().default(false),
+    refundTransactionIds: z.array(z.string()).optional(),
     processDateTime: z.date().transform((date) => date.toISOString()),
     settlementDateTime: z.date().transform((date) => date.toISOString()).optional(),
     refundTransactionId: z.string().optional(),
     gatewayCode: z.string().optional(),
     reason: z.string().optional(),
-
-    // Payment Method
-    paymentMethod: z.enum(["CREDIT", "CARD", "BANK_ACCOUNT", "CASH", "OTHER"]),
 
     // Migration
     migrationId: z.string().optional(),

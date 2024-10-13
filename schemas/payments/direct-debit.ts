@@ -1,5 +1,7 @@
 import { z } from "zod";
-import { specificHour } from "../lib/date";
+import { cronDate } from "../lib/date";
+
+import { Schema as Location } from "../brand/location";
 
 export const Versions = [
   z.object({ // 0
@@ -12,17 +14,18 @@ export const Versions = [
     settlementReportId: z.string().optional(),
 
     // Cron
-    cronNext: specificHour,
+    cronNext: cronDate,
     cronFields: z.array(z.string()).default([
       "debitDate",
     ]),
 
     // Details
+    aliasUserId: z.string(),
     debitDate: z.date().transform((date) => date.toISOString()),
     contractDebitIndex: z.number(),
-    status: z.enum(["PROCESSING", "PAID", "FAILED"]),
-    locationShortName: z.string(),
-    locationName: z.string(),
+    status: z.enum(["SCHEDULED", "PROCESSING", "PAID", "FAILED"]),
+    locationName: Location.shape.name,
+    locationShortName: Location.shape.shortName,
 
     // Amounts
     amountTotal: z.number(),

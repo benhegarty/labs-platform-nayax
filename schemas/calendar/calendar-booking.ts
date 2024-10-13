@@ -1,27 +1,26 @@
 import { z } from "zod";
-import { days } from "../lib/date";
 
 export const Prefix = "cab";
 
 export const Versions = [
   z.object({ // 0
     // Links
-    brandId: z.string(),
-    locationId: z.string(),
     calendarId: z.string(),
-    templateId: z.string().optional(),
+    calendarEventId: z.string(),
+    brandId: z.string().optional(),
+    locationId: z.string().optional(),
     userId: z.string().optional(),
     transactionId: z.string().optional(),
     
-    // Relative
-    startTime: z.string().optional(),
-    endTime: z.string().optional(),
-    weekCycle: z.number().optional(),
-    day: days.optional(),
+    // Details
+    isWaitlist: z.boolean().default(false),
+    isCancelled: z.boolean().default(false),
+    isRefunded: z.boolean().default(false),
+    isNoShow: z.boolean().default(false),
 
-    // Absolute
-    startDateTime: z.string().optional(),
-    endDateTime: z.string().optional(),
+    // Time
+    eventName: z.string().optional(),
+    cancelDateTime: z.string().optional(),
 
     // Financial
     cost: z.number().optional(),

@@ -9,10 +9,12 @@ export const Service: ServiceDefinition = {
 
 // Websocket events
 import { Connect } from "./websocket/connect";
+import { Config } from "./websocket/config";
 import { CheckCode } from "./websocket/check-code";
 import { OfflineDb } from "./websocket/offline-db";
 
 export const Websocket = {
+  Config,
   Connect,
   CheckCode,
   OfflineDb

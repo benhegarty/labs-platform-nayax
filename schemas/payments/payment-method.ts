@@ -6,7 +6,11 @@ export const Versions = [
     userId: z.string(),
 
     // Details
-    type: z.enum(["CREDIT_CARD", "DIRECT_DEBIT"]),
+    aliasUserId: z.string(),
+    type: z.enum([
+      "CREDIT_CARD", 
+      "BANK_ACCOUNT"
+    ]),
     isDeleted: z.boolean().optional(),
 
     // Credit Card

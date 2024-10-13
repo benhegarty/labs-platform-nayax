@@ -18,7 +18,8 @@ export const Versions = [
     errorMessageText: z.string().optional(),
     doorImageUrl: z.string().optional(),
 
-    isEnabled: z.boolean().default(true),
+    isArchived: z.boolean().default(false),
+    isDiabled: z.boolean().default(false),
     isPublicWatch: z.boolean().default(false),
     isPublicApp: z.boolean().default(false),
 

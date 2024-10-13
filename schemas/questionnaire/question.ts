@@ -2,6 +2,10 @@ import { z } from "zod";
 
 export const Versions = [
   z.object({ // 0
+    // Links
+    brandId: z.string(),
+
+    // Details
     type: z.enum(["CONSENT_FORM", "HEALTH_QUESTIONNAIRE", "INJURY_QUESTIONNAIRE", "OTHER"]),
     question: z.string(),
   })

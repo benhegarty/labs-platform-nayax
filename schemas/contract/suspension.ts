@@ -28,6 +28,7 @@ export const Versions = [
     // Period
     fromDateTime: z.date().transform((date) => date.toISOString()),
     toDateTime: z.date().transform((date) => date.toISOString()),
+    cancelDateTime: z.date().transform((date) => date.toISOString()).optional(),
     periodDays: z.number(),
 
     // Migration

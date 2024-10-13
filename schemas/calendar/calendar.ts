@@ -3,8 +3,10 @@ import { z } from "zod";
 export const Versions = [
   z.object({ // 0
     // Links
-    brandId: z.string(),
-    locationId: z.string(),
+    brandId: z.string().optional(),
+    locationId: z.string().optional(),
+    roomId: z.string().optional(),
+    userId: z.string().optional(),
     
     // Details
     name: z.string(),

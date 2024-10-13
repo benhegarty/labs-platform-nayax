@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { debtCollectionType } from "../lib/debt-collection";
-import { specificHour, weekHours } from "../lib/date";
+import { cronDate, weekHours } from "../lib/date";
 
 export const Versions = [
   z.object({ // 0
@@ -8,7 +8,7 @@ export const Versions = [
     brandId: z.string(),
 
     // Cron
-    cronNext: specificHour,
+    cronNext: cronDate,
     cronFields: z.array(z.string()).default([
       "presaleStartDateTime",
       "openDateTime", 
@@ -67,6 +67,7 @@ export const Versions = [
     settlementDescriptor: z.string().optional(),
     debtCollectionType: debtCollectionType.default("DISABLED"),
 
+    // Hours
     hours: z.object({
       open: weekHours.optional(),
       peak: weekHours.optional(),
@@ -74,10 +75,9 @@ export const Versions = [
       creche: weekHours.optional(),
     }).optional(),
 
-    thirdParty: z.object({
-      name: z.string().optional(),
-      url: z.string().optional(),
-    }).optional()
+    // Migration
+    migrationId: z.string().optional(),
+    migrationPlatform: z.string().optional(),
   })
 ];
 

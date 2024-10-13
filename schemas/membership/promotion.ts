@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { specificHour } from "../lib/date";
+import { cronDate } from "../lib/date";
 import {
   promotionFixedPriceDiscount,
   promotionJoiningFee,
@@ -15,7 +15,7 @@ export const Versions = [
     locationId: z.string().optional(),
 
     // Cron
-    cronNext: specificHour,
+    cronNext: cronDate,
     cronFields: z.array(z.string()).default([
       "prelaunchDateTime",
       "startDateTime",
@@ -37,10 +37,10 @@ export const Versions = [
     startDateTime: z.date().transform((date) => date.toISOString()),
     endDateTime: z.date().transform((date) => date.toISOString()).optional(),
 
-    // Vouchers
-    voucherCode: z.string().optional(),
-    voucherTotal: z.number().optional(),
-    voucherRemaining: z.number().optional(),
+    // Promo Codes
+    promoCode: z.string().optional(),
+    promoCodeTotal: z.number().optional(),
+    promoCodeRemaining: z.number().optional(),
 
     // Web
     web: z.object({
