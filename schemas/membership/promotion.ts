@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cronDate } from "../lib/date";
+import { date } from "../lib/date";
 import {
   promotionFixedPriceDiscount,
   promotionJoiningFee,
@@ -15,7 +15,7 @@ export const Versions = [
     locationId: z.string().optional(),
 
     // Cron
-    cronNext: cronDate,
+    cronNext: date,
     cronFields: z.array(z.string()).default([
       "prelaunchDateTime",
       "startDateTime",

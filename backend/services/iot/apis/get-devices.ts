@@ -6,9 +6,9 @@ import { API } from "@labs/api/iot";
 // Define and configure the backend function
 export const be = backendFor(API.GetDevices);
 
-be.handler = async (_) => {
+be.handler = async (e) => {
   return {
-    hello: "world"
+    hello: e.body.input
   };
 };
 

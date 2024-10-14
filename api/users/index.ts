@@ -8,6 +8,7 @@ export const Service: ServiceDefinition = {
 };
 
 // APIs
+import { PutUser } from "./apis/migrations/put-user";
 import { GetUser } from "./apis/get-user";
 import { GetLocationNewUsers } from "./apis/location/location-new-users";
 import { JoinInitial } from "./apis/joining/join-1-initial";
@@ -15,6 +16,7 @@ import { JoinMembership } from "./apis/joining/join-2-membership";
 import { JoinDetails } from "./apis/joining/join-3-details";
 
 export const API = {
+  PutUser,
   GetUser,
   GetLocationNewUsers,
   JoinInitial,

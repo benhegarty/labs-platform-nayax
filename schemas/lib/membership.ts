@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { wrapOpenApi } from "@labs/core.api";
+wrapOpenApi(z);
 
 export const ageGroupPricing = z.object({
   name: z.string(),

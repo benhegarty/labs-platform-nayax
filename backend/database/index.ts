@@ -2,7 +2,7 @@ import { child, index, itemKey, indexes, searchField, schemaKey, fieldKey } from
 
 import * as s from "@labs/schemas";
 
-export const Indexes = indexes({
+export const Indexes = indexes(s, {
   PRIMARY: index("PRIMARY"), // populared during initSchemas with ID PK
 
   GSI1: index("GSI1", {

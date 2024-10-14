@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { wrapOpenApi } from "@labs/core.api";
+wrapOpenApi(z);
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export const internationalPhone = z.string().refine((phoneNumber) => {

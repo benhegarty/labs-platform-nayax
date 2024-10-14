@@ -1,6 +1,8 @@
 // Export all api modules
 export * as Auth from "./auth";
-export * as Calendar from "./calendar";
+export * as Brands from "./brands";
+export * as Calendars from "./calendars";
+export * as Contracts from "./contracts";
 export * as Documentation from "./documentation";
 export * as Iot from "./iot";
 export * as Locations from "./locations";

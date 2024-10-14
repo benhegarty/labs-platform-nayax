@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cronDate } from "../lib/date";
+import { date } from "../lib/date";
 
 import { Schema as Location } from "../brand/location";
 
@@ -14,7 +14,7 @@ export const Versions = [
     settlementReportId: z.string().optional(),
 
     // Cron
-    cronNext: cronDate,
+    cronNext: date,
     cronFields: z.array(z.string()).default([
       "debitDate",
     ]),

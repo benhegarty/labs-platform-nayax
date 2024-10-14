@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { specificHour } from "../lib/date";
+import { date } from "../lib/date";
 
 
 export const Versions = [
@@ -12,7 +12,7 @@ export const Versions = [
     suspensionTransactionId: z.string().optional(),
 
     // Cron
-    cronNext: specificHour,
+    cronNext: date,
     cronFields: z.array(z.string()).default([
       "fromDateTime",
       "toDateTime"

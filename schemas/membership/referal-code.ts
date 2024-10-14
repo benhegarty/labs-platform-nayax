@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cronDate } from "../lib/date";
+import { date } from "../lib/date";
 
 export const Versions = [
   z.object({ // 0
@@ -10,8 +10,10 @@ export const Versions = [
     familyRootContractId: z.string().optional(),
     referrerUserId: z.string().optional(),
 
+    locationName: z.string().optional(),
+
     // Cron
-    cronNext: cronDate,
+    cronNext: date,
     cronFields: z.array(z.string()).default([
       "expiryDateTime",
     ]),

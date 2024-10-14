@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { debtCollectionType } from "../lib/debt-collection";
-import { cronDate, weekHours } from "../lib/date";
+import { date, weekHours } from "../lib/date";
 
 export const Versions = [
   z.object({ // 0
@@ -8,7 +8,7 @@ export const Versions = [
     brandId: z.string(),
 
     // Cron
-    cronNext: cronDate,
+    cronNext: date,
     cronFields: z.array(z.string()).default([
       "presaleStartDateTime",
       "openDateTime", 
